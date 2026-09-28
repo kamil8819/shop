@@ -55,7 +55,7 @@
 
   <script>
     async function loadAdmin() {
-      const resp = await fetch('products.json');
+      const resp = await fetch('products.json?t=' + Date.now(), { cache: 'no-store' });
       const products = await resp.json();
       const list = document.getElementById('adminProductsList');
 

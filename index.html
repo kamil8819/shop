@@ -276,7 +276,7 @@
 
     async function loadProducts() {
       try {
-        const resp = await fetch('products.json');
+        const resp = await fetch('products.json?t=' + Date.now(), { cache: 'no-store' });
         products = await resp.json();
         renderProducts();
 
@@ -289,6 +289,12 @@
         console.error('Ошибка загрузки products.json:', e);
       }
     }
+
+    window.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        loadProducts();
+      }
+    });
 
     function setCategory(cat) {
       hapticFeedback('selection');
