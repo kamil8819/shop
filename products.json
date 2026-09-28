@@ -8,283 +8,650 @@
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/lanterns_autumn.jpg",
-    "badge": "Хит осени",
-    "description": "Ажурные светильники с теплым мягким свечением. Узоры: кленовые листья, лесные грибочки, тыквы и ежики. Безопасны для использования с чайной LED-свечой.",
-    "specs": [
-      "Материал: Термостойкий полупрозрачный пластик",
-      "Постобработка: Акриловый грунт и эко-краска на водной основе",
-      "Подходит под LED-свечу или гирлянду",
-      "Доставка: ПВЗ Ozon"
+    "image": "images/items/lanterns-autumn.jpg",
+    "images": [
+      "images/items/lanterns-autumn.jpg",
+      "images/items/lanterns-autumn_2.jpg",
+      "images/items/lanterns-autumn_3.jpg",
+      "images/items/lanterns-autumn_4.jpg",
+      "images/items/lanterns-autumn_5.jpg",
+      "images/items/lanterns-autumn_6.jpg"
     ],
-    "options": []
+    "badge": "ХИТ ОСЕНИ",
+    "specs": [
+      "В комплекте LED-свеча",
+      "Материал: Термостойкий PLA/PET-G",
+      "Узоры: листья, тыквы, паутинка"
+    ],
+    "description": "Атмосферные резные светильники-ночники с осенними узорами (кленовые листья, тыквы). Создают невероятную теплую игру теней на стенах. Безопасная светодиодная LED-свечка идет в подарок к каждому заказу!"
   },
   {
     "id": "hut-chicken-legs",
     "title": "Сказочная «Избушка на курьих ножках»",
     "category": "lanterns",
-    "categoryName": "Светильники",
+    "categoryName": "Светильники & Копилки",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/izbushka.jpg",
-    "badge": "2-в-1 Светильник + Копилка",
-    "description": "Высота 16,5 см. Выполнена из переливающегося радужного PLA-пластика. Имеет 2 функционала: домик для LED-свечи и мини-копилка. Сквозные окошки создают мягкий волшебный свет.",
+    "image": "images/items/hut-chicken-legs.jpg",
+    "images": [
+      "images/items/hut-chicken-legs.jpg",
+      "images/items/hut-chicken-legs_2.jpg",
+      "images/items/hut-chicken-legs_3.jpg",
+      "images/items/hut-chicken-legs_4.jpg"
+    ],
+    "badge": "2-В-1 СВЕТИЛЬНИК + КОПИЛКА",
     "specs": [
       "Высота: 16.5 см",
       "Материал: Радужный шелковый PLA",
-      "Функции: Ночник-светильник + копилка",
-      "LED-свечка в комплекте"
+      "2 режима: копилка для монет + светильник"
     ],
-    "options": []
+    "description": "Невероятно детализированная избушка Бабы Яги на куриных лапках. Напечатана из переливающегося радужного PLA-пластика. Имеет съемную крышу: днем служит копилкой для монет, а вечером превращается в сказочный ночник!"
+  },
+  {
+    "id": "alisa-cat-stand",
+    "title": "Подставка для Яндекс Станции Алиса Лайт-2 «Кот»",
+    "category": "gadgets",
+    "categoryName": "Алиса & Гаджеты",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/alisa-cat-stand.jpg",
+    "images": [
+      "images/items/alisa-cat-stand.jpg",
+      "images/items/alisa-cat-stand_2.jpg",
+      "images/items/alisa-cat-stand_3.jpg",
+      "images/items/alisa-cat-stand_4.jpg",
+      "images/items/alisa-cat-stand_5.jpg",
+      "images/items/alisa-cat-stand_6.jpg"
+    ],
+    "badge": "ЭКСКЛЮЗИВ",
+    "specs": [
+      "17 часов точной печати",
+      "Идеальная посадка под Алису Лайт-2",
+      "Материал: Прочный ударостойкий пластик"
+    ],
+    "description": "Эксклюзивная подставка в виде стилизованного кота для умной колонки Яндекс Станция Алиса Лайт-2. Колонка надежно фиксируется в корпусе, звук и микрофоны остаются полностью открытыми. Стильный акцент в интерьере!"
   },
   {
     "id": "crown-rhaenyra",
     "title": "Корона Рейниры Таргариен (Дом Дракона)",
     "category": "cosplay",
-    "categoryName": "Косплей и фигурки",
+    "categoryName": "Косплей & Фигурки",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/crown_rhaenyra.jpg",
-    "badge": "Премиум косплей",
-    "description": "Точная полноразмерная реплика короны Рейниры Таргариен из «Дома Дракона» / «Игры Престолов». Прочный термостойкий PET-G, ручная грунтовка и металлическая роспись.",
-    "specs": [
-      "Материал: Ударопрочный PET-G",
-      "Покрытие: Акриловый грунт + краска на водной основе",
-      "Вес: ~180 г",
-      "Анатомическая посадка"
+    "image": "images/items/crown-rhaenyra.jpg",
+    "images": [
+      "images/items/crown-rhaenyra.jpg",
+      "images/items/crown-rhaenyra_2.jpg",
+      "images/items/crown-rhaenyra_3.jpg",
+      "images/items/crown-rhaenyra_4.jpg",
+      "images/items/crown-rhaenyra_5.jpg",
+      "images/items/crown-rhaenyra_6.jpg"
     ],
-    "options": []
-  },
-  {
-    "id": "forest-gnome",
-    "title": "Сборная фигурка «Лесной Гном»",
-    "category": "cosplay",
-    "categoryName": "Косплей и фигурки",
-    "price": 0,
-    "oldPrice": 0,
-    "rating": 5.0,
-    "reviews": 12,
-    "image": "images/items/gnome.jpg",
-    "badge": "Сборная цветная",
-    "description": "Уютная фигурка гномика для полки, стола или подоконника. Многодетальная цветная 3D-печать с надежной фиксацией элементов.",
-    "specs": [
-      "Тип: Сборная модель",
-      "Материал: Экологичный матовый PLA",
-      "Позиция: Сидячая (на край полки/стола)"
-    ],
-    "options": []
-  },
-  {
-    "id": "figurine-venom",
-    "title": "Большая коллекционная фигурка «Веном» (30 см)",
-    "category": "cosplay",
-    "categoryName": "Косплей и фигурки",
-    "price": 0,
-    "oldPrice": 0,
-    "rating": 5.0,
-    "reviews": 12,
-    "image": "images/items/venom.jpg",
-    "badge": "Масштабная фигурка",
-    "description": "Детализированная скульптура Венома. Примерная высота готового изделия 30 см. Поставляется в разборном виде с надежной фиксацией двухфазным клеем.",
-    "specs": [
-      "Высота: ~30 см",
-      "Материал: Ударопрочный пластик высокой детализации",
-      "Сборная конструкция"
-    ],
-    "options": []
-  },
-  {
-    "id": "stationery-organizers",
-    "title": "Органайзеры, подставки для ручек и телефонов",
-    "category": "stationery",
-    "categoryName": "Канцелярия",
-    "price": 0,
-    "oldPrice": 0,
-    "rating": 5.0,
-    "reviews": 12,
-    "image": "images/items/organizer_pens.jpg",
-    "badge": "Для учебы и офиса",
-    "description": "Набор удобных настольных органайзеров: подставки для карандашей и ручек, именные линейки, устойчивые подставки для смартфонов любых размеров.",
-    "specs": [
-      "Материал: Прочный износостойкий пластик",
-      "Подходит под любые смартфоны и канцелярию",
-      "Индивидуальная гравировка имени"
-    ],
-    "options": []
-  },
-  {
-    "id": "pencil-cup",
-    "title": "Дизайнерская карандашница-ваза",
-    "category": "stationery",
-    "categoryName": "Канцелярия",
-    "price": 0,
-    "oldPrice": 0,
-    "rating": 5.0,
-    "reviews": 12,
-    "image": "images/items/pencil_cup.jpg",
-    "badge": "Стильный рабочий стол",
-    "description": "Эстетичная фигурная карандашница для канцелярии, маркеров или кистей. Отлично дополняет рабочий стол дома и в офисе.",
-    "specs": [
-      "Материал: Матовый шелковый PLA",
-      "Устойчивое массивное дно",
-      "Цвета: Графит, Белый шелк, Изумруд"
-    ],
-    "options": []
-  },
-  {
-    "id": "wall-decor-cache",
-    "title": "Настенное панно с потайным «тайником»",
-    "category": "decor",
-    "categoryName": "Декор и интерьер",
-    "price": 0,
-    "oldPrice": 0,
-    "rating": 5.0,
-    "reviews": 12,
-    "image": "images/items/wall_cache.jpg",
-    "badge": "Авторский декор",
-    "description": "Объемное настенное панно со скрытым углублением-тайником внутри. Две части изделия соединяются через надежный штык-паз. Покрыто грунтом, акрилом и лаком.",
+    "badge": "TOP COSPLAY",
     "specs": [
       "Материал: PET-G пластик",
-      "Покрытие: Акриловая роспись + защитный лак",
-      "Функция: Скрытый внутренний отсек"
+      "Покрытие: Акриловый золотой лак + патина",
+      "Анатомическая посадка"
     ],
-    "options": []
+    "description": "Высокодетализированная реплика короны королевы Рейниры Таргариен из сериала «Дом Дракона» (Game of Thrones). Ручная художественная постобработка, золочение и эффект античного металла. Идеально для фотосессий и косплея."
   },
   {
-    "id": "decor-sets-interior",
-    "title": "Интерьерные наборы ваз и подставок",
-    "category": "decor",
-    "categoryName": "Декор и интерьер",
+    "id": "venom-figure",
+    "title": "Большая коллекционная фигурка «Веном» (30 см)",
+    "category": "cosplay",
+    "categoryName": "Косплей & Фигурки",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/decor_sets.jpg",
-    "badge": "Скандинавский стиль",
-    "description": "Стильные декоративные вазочки и подставки в лаконичном стиле. Доступные цвета: белый, серый, черный, темный хаки.",
-    "specs": [
-      "В комплекте: 3 предмета",
-      "Цвета: Белый, Серый, Черный, Хаки",
-      "Для сухоцветов и интерьерных композиций"
+    "image": "images/items/venom-figure.jpg",
+    "images": [
+      "images/items/venom-figure.jpg",
+      "images/items/venom-figure_2.jpg"
     ],
-    "options": []
+    "badge": "30 СМ / КОЛЛЕКЦИЯ",
+    "specs": [
+      "Высота: 30 см",
+      "Разборная конструкция для безопасной доставки",
+      "Материал: Прочный ударостойкий PET-G"
+    ],
+    "description": "Впечатляющая скульптура симбиота Венома с раскрытой зубастой пастью и длинным языком. Изготовлена из сверхпрочного черного пластика. Поставляется в разборном виде на надежных коннекторах, собирается за 1 минуту."
   },
   {
-    "id": "hearts-legs-gift",
-    "title": "Сердечки с ножками в крафт-коробке",
-    "category": "decor",
-    "categoryName": "Декор и интерьер",
+    "id": "gnome-woodland",
+    "title": "Сборная цветная фигурка «Лесной Гном»",
+    "category": "cosplay",
+    "categoryName": "Косплей & Фигурки",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/hearts_legs.jpg",
-    "badge": "Милый подарок",
-    "description": "Трогательные объемные сердечки на забавных ножках. Текст и размеры можно индивидуализировать. Подарочная крафт-коробочка с бумажным наполнителем в комплекте.",
-    "specs": [
-      "Размер: 5x5 см (или на заказ)",
-      "Упаковка: Крафтовая подарочная коробка",
-      "Возможна гравировка надписи"
+    "image": "images/items/gnome-woodland.jpg",
+    "images": [
+      "images/items/gnome-woodland.jpg",
+      "images/items/gnome-woodland_2.jpg",
+      "images/items/gnome-woodland_3.jpg",
+      "images/items/gnome-woodland_4.jpg",
+      "images/items/gnome-woodland_5.jpg",
+      "images/items/gnome-woodland_6.jpg"
     ],
-    "options": []
+    "badge": "ЦВЕТНАЯ ПЕЧАТЬ",
+    "specs": [
+      "Высота: 12 см",
+      "Многоцветные раздельные элементы",
+      "Материал: Эко-PLA"
+    ],
+    "description": "Милый сказочный лесной гномик в колпаке. Собирается из цветных деталей высокой четкости без необходимости ручной покраски. Идеальный подарок для уюта на рабочем столе или книжной полке."
   },
   {
-    "id": "photo-stand-flower",
-    "title": "Подставка для фото «Цветочек-Сердечко»",
-    "category": "decor",
-    "categoryName": "Декор и интерьер",
+    "id": "dragon-articulated",
+    "title": "Подвижный Дракон Антистресс (34 см)",
+    "category": "flexi",
+    "categoryName": "Флекси-игрушки",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/photo_stand.jpg",
-    "badge": "Сувенир",
-    "description": "Декоративная настольная подставка для памятных фото и открыток. Высота 9 см. Красивая крафтовая коробка с наполнителем в комплекте.",
-    "specs": [
-      "Высота: 9 см",
-      "Подарочная упаковка в комплекте",
-      "Опт и розница"
+    "image": "images/items/dragon-articulated.jpg",
+    "images": [
+      "images/items/dragon-articulated.jpg",
+      "images/items/dragon-articulated_2.jpg",
+      "images/items/dragon-articulated_3.jpg",
+      "images/items/dragon-articulated_4.jpg",
+      "images/items/dragon-articulated_5.jpg",
+      "images/items/dragon-articulated_6.jpg"
     ],
-    "options": []
+    "badge": "ХИТ АНТИСТРЕСС",
+    "specs": [
+      "Длина: 34 см",
+      "Подвижные шарнирные звенья",
+      "Материал: Высокопрочный PET-G"
+    ],
+    "description": "Большой гибкий шарнирный дракон. Каждое звено тела, лапки и хвост свободно двигаются. Отлично снимает стресс, приятно перебирается в руках и круто смотрится на столе. Прочный и долговечный."
   },
   {
-    "id": "bird-feeder-modern",
+    "id": "statue-gaia",
+    "title": "Статуэтка «Гайя — Мать Земля»",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/statue-gaia.jpg",
+    "images": [
+      "images/items/statue-gaia.jpg",
+      "images/items/statue-gaia_2.jpg",
+      "images/items/statue-gaia_3.jpg",
+      "images/items/statue-gaia_4.jpg",
+      "images/items/statue-gaia_5.jpg"
+    ],
+    "badge": "АВТОРСКИЙ ДЕКОР",
+    "specs": [
+      "Размер: 7×4 см, высота 10 см",
+      "Глубокая прорисовка деталей",
+      "Цвета: Белый, Бронза, Зеленый"
+    ],
+    "description": "Изящная статуэтка богини Земли Гайи (Геи). Символ плодородия, гармонии и материнской заботы. Прекрасный подарок со смыслом для интерьера дома или медитативного уголка."
+  },
+  {
+    "id": "statue-family",
+    "title": "Интерьерная статуэтка «Семья / Family»",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/statue-family.jpg",
+    "images": [
+      "images/items/statue-family.jpg",
+      "images/items/statue-family_2.jpg",
+      "images/items/statue-family_3.jpg",
+      "images/items/statue-family_4.jpg",
+      "images/items/statue-family_5.jpg",
+      "images/items/statue-family_6.jpg"
+    ],
+    "badge": "ДУШЕВНЫЙ ПОДАРОК",
+    "specs": [
+      "Материал: Прочный матовый пластик",
+      "Доступные цвета: Белый, Черный, Бежевый",
+      "Подарочная упаковка"
+    ],
+    "description": "Трогательная композиция, символизирующая любовь, единство и семейный очаг. Минималистичные плавные линии отлично впишутся в любой современный интерьер гостиной или спальни."
+  },
+  {
+    "id": "statue-mother-kids",
+    "title": "Скульптурная композиция «Мама и Дети» + Магнит",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/statue-mother-kids.jpg",
+    "images": [
+      "images/items/statue-mother-kids.jpg",
+      "images/items/statue-mother-kids_2.jpg",
+      "images/items/statue-mother-kids_3.jpg",
+      "images/items/statue-mother-kids_4.jpg",
+      "images/items/statue-mother-kids_5.jpg",
+      "images/items/statue-mother-kids_6.jpg"
+    ],
+    "badge": "КО ДНЮ МАТЕРИ",
+    "specs": [
+      "Высота: 14 см",
+      "В комплекте: статуэтка + памятный магнит",
+      "Цвета: Белый, Перламутр, Бирюзовый"
+    ],
+    "description": "Нежная статуэтка мамы с детьми в комплекте с интерьерным сувенирным магнитиком. Лучший душевный подарок маме на день рождения, 8 марта или День Матери."
+  },
+  {
+    "id": "bank-makena",
+    "title": "Сувенирная интерьерная копилка «Макена» (20 см)",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/bank-makena.jpg",
+    "images": [
+      "images/items/bank-makena.jpg",
+      "images/items/bank-makena_2.jpg",
+      "images/items/bank-makena_3.jpg",
+      "images/items/bank-makena_4.jpg",
+      "images/items/bank-makena_5.jpg",
+      "images/items/bank-makena_6.jpg"
+    ],
+    "badge": "20 СМ / ПРЕМИУМ",
+    "specs": [
+      "Высота: 20 см",
+      "Глубокая детализация",
+      "Вместительный отсек для купюр и монет"
+    ],
+    "description": "Внушительная интерьерная копилка в этно-стиле с выразительными чертами. Прекрасно смотрится в кабинете или гостиной, совмещая эстетику статуэтки и практичность копилки."
+  },
+  {
+    "id": "bank-bear",
+    "title": "Мини-копилка «Русский Медведь»",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/bank-bear.jpg",
+    "images": [
+      "images/items/bank-bear.jpg",
+      "images/items/bank-bear_2.jpg",
+      "images/items/bank-bear_3.jpg",
+      "images/items/bank-bear_4.jpg",
+      "images/items/bank-bear_5.jpg",
+      "images/items/bank-bear_6.jpg"
+    ],
+    "badge": "СУВЕНИР",
+    "specs": [
+      "Материал: Ударопрочный пластик",
+      "Цвета: Коричневый, Белый, Золотой",
+      "Пробка на дне"
+    ],
+    "description": "Компактная и надежная копилка в виде мощного медведя. Отличный сувенир для детей и взрослых, помогает копить на мечту."
+  },
+  {
+    "id": "cat-organizer",
+    "title": "Органайзер для ручек и канцелярии «Кошка»",
+    "category": "organizers",
+    "categoryName": "Органайзеры",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/cat-organizer.jpg",
+    "images": [
+      "images/items/cat-organizer.jpg",
+      "images/items/cat-organizer_2.jpg",
+      "images/items/cat-organizer_3.jpg",
+      "images/items/cat-organizer_4.jpg",
+      "images/items/cat-organizer_5.jpg",
+      "images/items/cat-organizer_6.jpg"
+    ],
+    "badge": "ДЛЯ СТОЛА",
+    "specs": [
+      "Размер: 7.4×9.7 см, высота 10 см",
+      "Вместимость: до 15 ручек/карандашей",
+      "Стильный силуэт"
+    ],
+    "description": "Функциональная и милая подставка для ручек, маркеров, кистей и стилусов в виде силуэта кошки. Наведет идеальный порядок на рабочем столе школьника, студента или мастера."
+  },
+  {
+    "id": "phone-organizer",
+    "title": "Универсальные подставки для телефонов и органайзеры",
+    "category": "organizers",
+    "categoryName": "Органайзеры",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/phone-organizer.jpg",
+    "images": [
+      "images/items/phone-organizer.jpg",
+      "images/items/phone-organizer_2.jpg",
+      "images/items/phone-organizer_3.jpg",
+      "images/items/phone-organizer_4.jpg",
+      "images/items/phone-organizer_5.jpg"
+    ],
+    "badge": "УДОБСТВО",
+    "specs": [
+      "Подходит под любые смартфоны и планшеты",
+      "Угол наклона 60° для видеозвонков",
+      "Прорезиненные ножки"
+    ],
+    "description": "Устойчивая настольная подставка для смартфона. Удобно смотреть видео, общаться по FaceTime/Telegram и заряжать телефон одновременно."
+  },
+  {
+    "id": "soap-dishes",
+    "title": "Дизайнерские мыльницы со сменными решетками",
+    "category": "decor",
+    "categoryName": "Для ванной & Дома",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/soap-dishes.jpg",
+    "images": [
+      "images/items/soap-dishes.jpg",
+      "images/items/soap-dishes_2.jpg",
+      "images/items/soap-dishes_3.jpg",
+      "images/items/soap-dishes_4.jpg",
+      "images/items/soap-dishes_5.jpg",
+      "images/items/soap-dishes_6.jpg"
+    ],
+    "badge": "ПРАКТИЧНО",
+    "specs": [
+      "Размер: 12.5×8 см, высота 2 см",
+      "Двойное дно: вода стекает, мыло не размокает",
+      "Сменные узорные решетки"
+    ],
+    "description": "Умная двухсоставная мыльница со стильным геометрическим узором. Вода свободно стекает в нижний поддон, мыло всегда остается сухим. Легко разбирается и моется."
+  },
+  {
+    "id": "secret-panel",
+    "title": "Настенное панно «Геометрия» с потайным тайником",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/secret-panel.jpg",
+    "images": [
+      "images/items/secret-panel.jpg",
+      "images/items/secret-panel_2.jpg",
+      "images/items/secret-panel_3.jpg",
+      "images/items/secret-panel_4.jpg"
+    ],
+    "badge": "С СЕКРЕТОМ",
+    "specs": [
+      "Размер: 22×22 см",
+      "Потайное внутреннее отделение",
+      "Скрытое магнитное крепление к стене"
+    ],
+    "description": "Стильный настенный арт-объект с объемным рельефом. Внутри спрятан тайник для ключей, ценных мелочей или заначки. Не привлекает лишнего внимания."
+  },
+  {
+    "id": "bird-feeder",
     "title": "Дизайнерская кормушка для птиц «21 Век»",
     "category": "decor",
-    "categoryName": "Декор и интерьер",
+    "categoryName": "Декор & Дом",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/bird_feeder.jpg",
-    "badge": "Победитель конкурса",
-    "description": "Победитель номинации «Кормушка 21 века». Всепогодная, прочная и безопасная конструкция для птиц с удобным подвесом и защитой корма от осадков.",
-    "specs": [
-      "Материал: Морозостойкий ударопрочный PETG",
-      "Всепогодное использование",
-      "Эргономичные жердочки"
+    "image": "images/items/bird-feeder.jpg",
+    "images": [
+      "images/items/bird-feeder.jpg",
+      "images/items/bird-feeder_2.jpg"
     ],
-    "options": []
+    "badge": "ПОБЕДИТЕЛЬ ВЫСТАВКИ",
+    "specs": [
+      "Победитель конкурса «Кормушка 21 Века»",
+      "Всепогодный морозостойкий PET-G",
+      "Защита корма от дождя и снега"
+    ],
+    "description": "Футуристическая кормушка для птиц, получившая диплом победителя в конкурсе инновационных кормушек. Устойчива к морозам, ветру и ультрафиолету. Крепится на окно или ветку."
+  },
+  {
+    "id": "hearts-feet",
+    "title": "Сувенирные Сердечки с ножками в крафт-коробке",
+    "category": "gifts",
+    "categoryName": "Подарки & Сувениры",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/hearts-feet.jpg",
+    "images": [
+      "images/items/hearts-feet.jpg",
+      "images/items/hearts-feet_2.jpg",
+      "images/items/hearts-feet_3.jpg",
+      "images/items/hearts-feet_4.jpg",
+      "images/items/hearts-feet_5.jpg",
+      "images/items/hearts-feet_6.jpg"
+    ],
+    "badge": "МИЛЫЙ ПОДАРОК",
+    "specs": [
+      "В крафтовой подарочной коробочке",
+      "Цвета: Ярко-красный, Белый, Розовый",
+      "Возможность гравировки инициалов"
+    ],
+    "description": "Очаровательные фигурки сердечек на забавных ножках. Поставляются в подарочной крафт-упаковке с наполнителем. Идеальный знак внимания любимому человеку."
+  },
+  {
+    "id": "photo-stand-march8",
+    "title": "Подставка для фото «Цветочек-Сердечко»",
+    "category": "gifts",
+    "categoryName": "Подарки & Сувениры",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/photo-stand-march8.jpg",
+    "images": [
+      "images/items/photo-stand-march8.jpg",
+      "images/items/photo-stand-march8_2.jpg",
+      "images/items/photo-stand-march8_3.jpg",
+      "images/items/photo-stand-march8_4.jpg",
+      "images/items/photo-stand-march8_5.jpg",
+      "images/items/photo-stand-march8_6.jpg"
+    ],
+    "badge": "К 8 МАРТА",
+    "specs": [
+      "Высота: 11 см",
+      "Удобный зажим для фотографии или записки",
+      "Яркие сочные цвета"
+    ],
+    "description": "Праздничная подставка для памятных фотокарточек, визиток или записок. Отличный сувенир коллегам, учителям и близким девушкам к праздникам."
+  },
+  {
+    "id": "flexi-octopus",
+    "title": "Подвижный флекси-брелок «Осьминожек»",
+    "category": "flexi",
+    "categoryName": "Флекси-игрушки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/flexi-octopus.jpg",
+    "images": [
+      "images/items/flexi-octopus.jpg",
+      "images/items/flexi-octopus_2.jpg",
+      "images/items/flexi-octopus_3.jpg",
+      "images/items/flexi-octopus_4.jpg",
+      "images/items/flexi-octopus_5.jpg",
+      "images/items/flexi-octopus_6.jpg"
+    ],
+    "badge": "АНТИСТРЕСС",
+    "specs": [
+      "Гибкие щупальца на шарнирах",
+      "Материал: Износостойкий PET-G",
+      "Цвета: Зеленый, Черный, Радужный"
+    ],
+    "description": "Популярный подвижный брелок-осьминог. Щупальца двигаются волной в любых направлениях. Забавная и прочная антистресс-игрушка на ключи или рюкзак."
+  },
+  {
+    "id": "flexi-chameleon",
+    "title": "Шарнирный флекси-брелок «Хамелеон»",
+    "category": "flexi",
+    "categoryName": "Флекси-игрушки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/flexi-chameleon.jpg",
+    "images": [
+      "images/items/flexi-chameleon.jpg",
+      "images/items/flexi-chameleon_2.jpg",
+      "images/items/flexi-chameleon_3.jpg",
+      "images/items/flexi-chameleon_4.jpg",
+      "images/items/flexi-chameleon_5.jpg",
+      "images/items/flexi-chameleon_6.jpg"
+    ],
+    "badge": "АНТИСТРЕСС",
+    "specs": [
+      "Длина: 10 см",
+      "Подвижный хвост и лапки",
+      "Прочное кольцо для ключей в комплекте"
+    ],
+    "description": "Гибкий хамелеон с подвижным позвоночником. Печатается сразу подвижным механизмом, звенья невозможно оторвать или сломать при обычном использовании."
+  },
+  {
+    "id": "karcher-dust-collector",
+    "title": "Насадка-пылеуловитель для пылесосов Kärcher WD 5/6",
+    "category": "tools",
+    "categoryName": "Инструменты & Мастерская",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/karcher-dust-collector.jpg",
+    "images": [
+      "images/items/karcher-dust-collector.jpg",
+      "images/items/karcher-dust-collector_2.jpg",
+      "images/items/karcher-dust-collector_3.jpg",
+      "images/items/karcher-dust-collector_4.jpg",
+      "images/items/karcher-dust-collector_5.jpg",
+      "images/items/karcher-dust-collector_6.jpg"
+    ],
+    "badge": "ДЛЯ СТРОЙКИ & РЕМОНТА",
+    "specs": [
+      "Совместимо с Kärcher WD 5, WD 6",
+      "100% улавливание пыли при сверлении до 70 мм",
+      "Сверхпрочный армированный пластик"
+    ],
+    "description": "Профессиональный пылеуловитель для чистого сверления стен без пыли и грязи. Надежно присасывается к стене за счет вакуума пылесоса. Незаменим при монтаже подрозетников и ремонте."
+  },
+  {
+    "id": "jig-radius-bevel",
+    "title": "Угловой шаблон-кондуктор со сменными вставками (Радиус/Фаска)",
+    "category": "tools",
+    "categoryName": "Инструменты & Мастерская",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/jig-radius-bevel.jpg",
+    "images": [
+      "images/items/jig-radius-bevel.jpg",
+      "images/items/jig-radius-bevel_2.jpg",
+      "images/items/jig-radius-bevel_3.jpg",
+      "images/items/jig-radius-bevel_4.jpg",
+      "images/items/jig-radius-bevel_5.jpg",
+      "images/items/jig-radius-bevel_6.jpg"
+    ],
+    "badge": "ДЛЯ СТОЛЯРОВ & МЕБЕЛИ",
+    "specs": [
+      "Сменные модули R10-R35 и фаски C10-C35",
+      "Идеальная точность для фрезера",
+      "Материал: PET-G"
+    ],
+    "description": "Универсальный фрезерный шаблон для быстрого и точного скругления углов и снятия фасок на мебельных щитах, столешницах и фасадах. База со сменными картриджами."
   },
   {
     "id": "fishing-molds",
-    "title": "Молды и шприцы для отливки приманок",
+    "title": "Молды и шприцы для отливки силиконовых приманок",
     "category": "tools",
-    "categoryName": "Инструменты и рыбалка",
+    "categoryName": "Инструменты & Мастерская",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/fishing_molds.jpg",
-    "badge": "Для рыбалки",
-    "description": "Точные прочные формы (молды) и нагнетательные шприцы для отливки силиконовых рыболовных приманок. Идеальная геометрия и долговечность.",
-    "specs": [
-      "Материал: Термостойкий плотный пластик",
-      "В комплекте: Молды + шприц для силикона",
-      "Высокая точность детализации рельефа"
+    "image": "images/items/fishing-molds.jpg",
+    "images": [
+      "images/items/fishing-molds.jpg",
+      "images/items/fishing-molds_2.jpg",
+      "images/items/fishing-molds_3.jpg",
+      "images/items/fishing-molds_4.jpg",
+      "images/items/fishing-molds_5.jpg"
     ],
-    "options": []
+    "badge": "РЫБАЛКА",
+    "specs": [
+      "Термостойкость до 200°C",
+      "Высокая детализация чешуи и хвостика",
+      "В комплекте: молды + нагнетательный шприц"
+    ],
+    "description": "Высокоточные разборные формы для самостоятельной отливки рыболовных силиконовых приманок (виброхвосты, твистеры, слаги). Гладкая поверхность каналов исключает раковины и пузыри."
   },
   {
-    "id": "spacers-furniture",
-    "title": "Монтажные зазорщики (комплект 4 шт)",
-    "category": "furniture",
-    "categoryName": "Мебельная фурнитура",
+    "id": "cabinet-gap-spacers",
+    "title": "Монтажные зазорщики мебельных фасадов (комплект 4 шт)",
+    "category": "tools",
+    "categoryName": "Инструменты & Мастерская",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/spacers.jpg",
-    "badge": "Инструмент мастера",
-    "description": "Профессиональные зазорщики для выставления ровных зазоров фасадов, плитки и панелей. Изготовлены из ударопрочного PET-G пластика.",
-    "specs": [
-      "В комплекте: 4 шт",
-      "Материал: Износостойкий PET-G",
-      "Точные калиброванные толщины"
+    "image": "images/items/cabinet-gap-spacers.jpg",
+    "images": [
+      "images/items/cabinet-gap-spacers.jpg",
+      "images/items/cabinet-gap-spacers_2.jpg"
     ],
-    "options": []
+    "badge": "ДЛЯ МЕБЕЛЬЩИКОВ",
+    "specs": [
+      "Точные калиброванные зазоры 2, 3, 4 мм",
+      "Комплект: 4 двусторонних калибра",
+      "Материал: Износостойкий PET-G"
+    ],
+    "description": "Специальные монтажные клинья для идеального выставления зазоров между мебельными фасадами, ящиками и фальшпанелями. Ускоряют монтаж кухни в 3 раза."
   },
   {
     "id": "cabinet-back-holders",
-    "title": "Фиксаторы задних стенок шкафов (комплект 4 шт)",
-    "category": "furniture",
-    "categoryName": "Мебельная фурнитура",
+    "title": "Фиксаторы задних стенок шкафов ДВП/ХДФ (комплект 4 шт)",
+    "category": "tools",
+    "categoryName": "Инструменты & Мастерская",
     "price": 0,
     "oldPrice": 0,
     "rating": 5.0,
     "reviews": 12,
-    "image": "images/items/cabinet_holders.jpg",
-    "badge": "Надежный крепеж",
-    "description": "Усиленные уголки-фиксаторы для плотного прижатия задних стенок (ХДФ/ДВП) мебели и шкафов. Устраняют дребезг и прогибы.",
-    "specs": [
-      "В комплекте: 4 шт",
-      "Материал: PET-G",
-      "Отверстия под стандартные саморезы 3.5 мм"
+    "image": "images/items/cabinet-back-holders.jpg",
+    "images": [
+      "images/items/cabinet-back-holders.jpg",
+      "images/items/cabinet-back-holders_2.jpg",
+      "images/items/cabinet-back-holders_3.jpg",
+      "images/items/cabinet-back-holders_4.jpg"
     ],
-    "options": []
+    "badge": "МЕБЕЛЬНАЯ ФУРНИТУРА",
+    "specs": [
+      "Комплект: 4 угловых фиксатора + саморезы",
+      "Надежный прижим задней стенки без деформации",
+      "Материал: PET-G"
+    ],
+    "description": "Усиленные уголки-клинья для жесткой фиксации задней стенки шкафов из ДВП/ХДФ. Предотвращают выгибание и дребезжание задней стенки, придают каркасу идеальную геометрию."
   }
 ]
