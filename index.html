@@ -75,7 +75,6 @@
       <button onclick="setCategory('figurines')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">🗿 Фигурки</button>
       <button onclick="setCategory('home')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">🪴 Для дома</button>
       <button onclick="setCategory('engineering')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">⚙️ Шестерни/Авто</button>
-      <button onclick="openCalculatorTab()" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 transition">📐 Калькулятор печати</button>
     </div>
   </nav>
 
@@ -85,79 +84,6 @@
       <!-- Товары рендерятся через JavaScript -->
     </div>
   </main>
-
-  <!-- Секция калькулятора 3D-печати -->
-  <section class="p-4 hidden" id="calculatorView">
-    <div class="tg-card rounded-2xl p-4 border border-slate-700 shadow-xl space-y-5">
-      <div class="flex items-center gap-3 border-b border-slate-700 pb-3">
-        <i class="fa-solid fa-calculator text-blue-400 text-xl"></i>
-        <div>
-          <h2 class="font-bold text-base">Экспресс-расчет 3D-печати</h2>
-          <p class="text-xs text-slate-400">Ориентировочная стоимость по весу и материалу</p>
-        </div>
-      </div>
-
-      <!-- Выбор пластика -->
-      <div>
-        <label class="block text-xs font-semibold text-slate-300 mb-2">Материал печати:</label>
-        <div class="grid grid-cols-2 gap-2" id="calcMaterialOptions">
-          <button type="button" onclick="selectCalcMat('petg', 7)" class="calc-mat-btn active p-2.5 rounded-xl border border-blue-500 bg-blue-500/10 text-left text-xs">
-            <div class="font-bold text-blue-400">PET-G (Хит)</div>
-            <div class="text-[10px] text-slate-400">Прочный, ударостойкий</div>
-          </button>
-          <button type="button" onclick="selectCalcMat('pla', 6)" class="calc-mat-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-left text-xs">
-            <div class="font-bold text-slate-200">PLA Стандарт</div>
-            <div class="text-[10px] text-slate-400">Для фигурок и декора</div>
-          </button>
-          <button type="button" onclick="selectCalcMat('nylon', 14)" class="calc-mat-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-left text-xs">
-            <div class="font-bold text-slate-200">Nylon / Carbon</div>
-            <div class="text-[10px] text-slate-400">Шестерни, высокие нагрузки</div>
-          </button>
-          <button type="button" onclick="selectCalcMat('resin', 18)" class="calc-mat-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-left text-xs">
-            <div class="font-bold text-slate-200">Фотополимер SLA</div>
-            <div class="text-[10px] text-slate-400">Ювелирная точность 50 мкм</div>
-          </button>
-        </div>
-      </div>
-
-      <!-- Слайдер веса -->
-      <div>
-        <div class="flex justify-between items-center text-xs font-semibold mb-2">
-          <span>Примерный вес детали:</span>
-          <span class="text-blue-400 text-sm font-bold" id="weightDisplay">60 г</span>
-        </div>
-        <input type="range" id="weightSlider" min="10" max="600" step="5" value="60" oninput="updateCalculator()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
-        <div class="flex justify-between text-[10px] text-slate-500 mt-1">
-          <span>10 г (клипса)</span>
-          <span>150 г (фигурка)</span>
-          <span>600 г (шлем/корпус)</span>
-        </div>
-      </div>
-
-      <!-- Дополнительные опции -->
-      <div class="space-y-2 pt-2 border-t border-slate-800 text-xs">
-        <label class="flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" id="calcModelingCheck" onchange="updateCalculator()" class="rounded bg-slate-700 border-slate-600 text-blue-600 focus:ring-0">
-          <span>Нужно 3D-моделирование по чертежу / обломкам (+600 ₽)</span>
-        </label>
-        <label class="flex items-center gap-2.5 cursor-pointer">
-          <input type="checkbox" id="calcPostprocessCheck" onchange="updateCalculator()" class="rounded bg-slate-700 border-slate-600 text-blue-600 focus:ring-0">
-          <span>Грунтовка и ручная покраска акрилом (+900 ₽)</span>
-        </label>
-      </div>
-
-      <!-- Итог расчета -->
-      <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-700 flex items-center justify-between">
-        <div>
-          <span class="text-[11px] text-slate-400 block">Расчетная стоимость:</span>
-          <span class="text-xl font-extrabold text-white" id="calcTotal">420 ₽</span>
-        </div>
-        <button onclick="orderFromCalculator()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition active:scale-95 shadow-lg shadow-blue-500/20">
-          Заказать расчет
-        </button>
-      </div>
-    </div>
-  </section>
 
   <!-- Модальное окно просмотра товара -->
   <div id="productModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center">
@@ -318,9 +244,6 @@
     let activeProduct = null;
     let selectedOptionIndex = 0;
 
-    // Параметры калькулятора
-    let calcPricePerGram = 7;
-
     // Загрузка товаров из JSON
     async function loadProducts() {
       try {
@@ -342,7 +265,6 @@
       hapticFeedback('selection');
       currentCategory = cat;
       document.getElementById('shopView').classList.remove('hidden');
-      document.getElementById('calculatorView').classList.add('hidden');
 
       document.querySelectorAll('#categoryTabs .cat-btn').forEach(btn => {
         btn.classList.remove('bg-blue-600', 'text-white');
@@ -352,19 +274,6 @@
       event.target.classList.add('bg-blue-600', 'text-white');
 
       renderProducts();
-    }
-
-    function openCalculatorTab() {
-      hapticFeedback('selection');
-      document.getElementById('shopView').classList.add('hidden');
-      document.getElementById('calculatorView').classList.remove('hidden');
-
-      document.querySelectorAll('#categoryTabs .cat-btn').forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'text-white');
-        btn.classList.add('bg-slate-800', 'text-slate-300');
-      });
-      event.target.classList.add('bg-blue-600', 'text-white');
-      updateCalculator();
     }
 
     function renderProducts() {
@@ -584,55 +493,7 @@
       `).join('');
     }
 
-    // 5. Калькулятор 3D-печати
-    function selectCalcMat(matType, priceGram) {
-      hapticFeedback('selection');
-      calcPricePerGram = priceGram;
-      document.querySelectorAll('#calcMaterialOptions .calc-mat-btn').forEach(btn => {
-        btn.classList.remove('border-blue-500', 'bg-blue-500/10');
-        btn.classList.add('border-slate-700', 'bg-slate-800');
-        btn.querySelector('div:first-child').classList.remove('text-blue-400');
-        btn.querySelector('div:first-child').classList.add('text-slate-200');
-      });
-      event.currentTarget.classList.add('border-blue-500', 'bg-blue-500/10');
-      event.currentTarget.classList.remove('border-slate-700', 'bg-slate-800');
-      event.currentTarget.querySelector('div:first-child').classList.add('text-blue-400');
-      event.currentTarget.querySelector('div:first-child').classList.remove('text-slate-200');
-      updateCalculator();
-    }
-
-    function updateCalculator() {
-      const weight = parseInt(document.getElementById('weightSlider').value, 10);
-      document.getElementById('weightDisplay').textContent = weight + ' г';
-
-      let total = weight * calcPricePerGram;
-      if (document.getElementById('calcModelingCheck').checked) total += 600;
-      if (document.getElementById('calcPostprocessCheck').checked) total += 900;
-
-      document.getElementById('calcTotal').textContent = total.toLocaleString() + ' ₽';
-    }
-
-    function orderFromCalculator() {
-      hapticFeedback('medium');
-      const weight = document.getElementById('weightSlider').value;
-      const total = parseInt(document.getElementById('calcTotal').textContent.replace(/\D/g, ''), 10);
-      const mod = document.getElementById('calcModelingCheck').checked ? '+ Моделирование' : '';
-      const post = document.getElementById('calcPostprocessCheck').checked ? '+ Покраска' : '';
-
-      cart.push({
-        id: 'calc-custom',
-        title: 'Индивидуальная 3D-печать по расчету',
-        price: total,
-        option: `Вес: ${weight}г ${mod} ${post}`.trim(),
-        image: 'images/gears.jpg',
-        qty: 1
-      });
-
-      updateCartUI();
-      openCart();
-    }
-
-    // 6. Отправка заказа в Telegram
+    // 5. Отправка заказа в Telegram
     async function submitOrder() {
       hapticFeedback('success');
       const name = document.getElementById('orderName').value.trim();
