@@ -656,15 +656,30 @@
         totalSum: totalSum
       };
 
-      // 1. Всегда отправляем на сервер для мгновенного уведомления владельца в Telegram
+      // 1. Прямая отправка владельцу в Telegram (работает на GitHub Pages 24/7 без сервера!)
       try {
-        await fetch('/api/order', {
+        const token = "8744417186:AAFdvQ0GT_Tosi_0r7Dp64vJdihLj5pEDj0";
+        const chatId = "496029586";
+        const itemsText = orderData.items.map(it => `  • <b>${it.title}</b> (${it.option || 'Стандарт'}) — ${it.qty} шт. x ${it.sum.toLocaleString()} ₽`).join('\n');
+        const msg = `🛍 <b>НОВЫЙ ЗАКАЗ ИЗ МАГАЗИНА 3D-ПЕЧАТИ!</b>\n\n` +
+                    `👤 <b>Клиент:</b> ${orderData.customer.name}\n` +
+                    `📞 <b>Связь:</b> ${orderData.customer.contact}\n` +
+                    `🚚 <b>Доставка Ozon:</b> ${orderData.delivery.address}\n\n` +
+                    `📦 <b>Состав заказа:</b>\n${itemsText}\n\n` +
+                    `💰 <b>ИТОГО К ОПЛАТЕ:</b> <b>${orderData.totalSum.toLocaleString()} ₽</b>\n` +
+                    `⏰ <i>${orderData.date}</i>`;
+
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(orderData)
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: msg,
+            parse_mode: 'HTML'
+          })
         });
       } catch (e) {
-        console.log('API notification error:', e);
+        console.log('Telegram direct notification error:', e);
       }
 
       // 2. Если открыто через ReplyKeyboard / MenuButton — передаем данные боту
