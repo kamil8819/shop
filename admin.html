@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель | 3D-Мастерская</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 sm:p-6 font-sans antialiased">
+  <div class="max-w-3xl mx-auto space-y-6">
+    
+    <!-- Шапка -->
+    <header class="flex items-center justify-between border-b border-slate-800 pb-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-black text-white shadow-lg">
+          👑
+        </div>
+        <div>
+          <h1 class="text-lg font-black text-white">Админ-панель витрины</h1>
+          <p class="text-xs text-slate-400">Управление ценами 15 товаров</p>
+        </div>
+      </div>
+      <a href="index.html" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 transition">
+        🛍 В магазин
+      </a>
+    </header>
+
+    <!-- Подсказка -->
+    <div class="bg-blue-950/40 border border-blue-500/30 rounded-2xl p-4 flex items-start gap-3 text-xs text-blue-200">
+      <i class="fa-solid fa-circle-info text-blue-400 text-base mt-0.5"></i>
+      <div>
+        <span class="font-bold block text-white mb-0.5">Быстрое изменение цен прямо из Telegram:</span>
+        Откройте бота <a href="https://t.me/print03d_shop_bot" target="_blank" class="underline font-bold text-blue-300">@print03d_shop_bot</a> и напишите команду <b>/admin</b>. Там можно менять цены в 1 тап!
+      </div>
+    </div>
+
+    <!-- Список товаров для настройки -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+      <h2 class="text-sm font-extrabold text-slate-300 border-b border-slate-800 pb-2">Список товаров на витрине:</h2>
+      <div id="adminProductsList" class="divide-y divide-slate-800/80">
+        <!-- Генерируется через JS -->
+      </div>
+    </div>
+
+    <!-- Бот-ссылка -->
+    <div class="text-center pt-4">
+      <a href="https://t.me/print03d_shop_bot" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-black text-sm rounded-xl shadow-lg shadow-blue-500/20 active:scale-95 transition">
+        <i class="fa-brands fa-telegram"></i>
+        <span>Открыть админку в боте (@print03d_shop_bot)</span>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    async function loadAdmin() {
+      const resp = await fetch('products.json');
+      const products = await resp.json();
+      const list = document.getElementById('adminProductsList');
+
+      list.innerHTML = products.map((p, idx) => `
+        <div class="py-3 flex items-center justify-between gap-3">
+          <img src="${p.image}" class="w-12 h-12 rounded-xl object-cover bg-slate-950 border border-slate-800 shrink-0">
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-xs text-white truncate">${p.title}</h4>
+            <p class="text-[10px] text-slate-400">${p.categoryName}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <span class="text-sm font-black text-blue-400 block">${p.price > 0 ? p.price.toLocaleString() + ' ₽' : '0 ₽'}</span>
+            <a href="https://t.me/print03d_shop_bot" target="_blank" class="text-[10px] text-blue-400 hover:underline">Изменить в боте</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    loadAdmin();
+  </script>
+</body>
+</html>
