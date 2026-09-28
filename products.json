@@ -646,5 +646,499 @@
       "Материал: Износостойкий PET-G пластик"
     ],
     "description": "Специальные фиксаторы задней стенки корпусных шкафов из ДВП/ХДФ. Предотвращают прогиб задней стенки и укрепляют общую геометрию корпуса."
+  },
+  {
+    "id": "geese-keychains",
+    "title": "Популярные брелоки «Гуси»",
+    "category": "flexi",
+    "categoryName": "Брелоки & Флекси",
+    "price": 150,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/geese-keychains.jpg",
+    "images": [
+      "images/items/geese-keychains.jpg",
+      "images/items/geese-keychains_2.jpg",
+      "images/items/geese-keychains_3.jpg",
+      "images/items/geese-keychains_4.jpg",
+      "images/items/geese-keychains_5.jpg",
+      "images/items/geese-keychains_6.jpg"
+    ],
+    "badge": "ТРЕНД",
+    "specs": [
+      "1 шт — 150 руб, опт от 15 шт — 130 руб",
+      "Цвета: Белый, Зеленый, Черный, Желтый",
+      "Прочное металлическое кольцо в комплекте"
+    ],
+    "description": "Очаровательные брелоки в виде гусей. Тренд соцсетей! Изготовлены из прочного пластика, отлично смотрятся на ключах, рюкзаке или сумке."
+  },
+  {
+    "id": "id-card-holders",
+    "title": "Защитные чехлы для ID-карт и пропусков",
+    "category": "organizers",
+    "categoryName": "Органайзеры & Аксессуары",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/id-card-holders.jpg",
+    "images": [
+      "images/items/id-card-holders.jpg",
+      "images/items/id-card-holders_2.jpg",
+      "images/items/id-card-holders_3.jpg",
+      "images/items/id-card-holders_4.jpg",
+      "images/items/id-card-holders_5.jpg",
+      "images/items/id-card-holders_6.jpg"
+    ],
+    "badge": "ПРАКТИЧНО",
+    "specs": [
+      "Идеальный размер под стандартную карту / пропуск",
+      "Прочный ударостойкий пластик",
+      "Ушко для крепления карабина или ленты"
+    ],
+    "description": "Прочные защитные чехлы-холдеры для пропусков, бейджей и ID-карт. Защищают пластиковые карты от перегибов, царапин и поломок."
+  },
+  {
+    "id": "flexi-snake",
+    "title": "Флекси-брелок «Змейка»",
+    "category": "flexi",
+    "categoryName": "Брелоки & Флекси",
+    "price": 120,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/flexi-snake.jpg",
+    "images": [
+      "images/items/flexi-snake.jpg",
+      "images/items/flexi-snake_2.jpg",
+      "images/items/flexi-snake_3.jpg",
+      "images/items/flexi-snake_4.jpg"
+    ],
+    "badge": "АНТИСТРЕСС",
+    "specs": [
+      "Размер: 9.7×1.3 см",
+      "Подвижные гибкие звенья",
+      "Цвета: Зеленый, Белый, Черный, Золотой"
+    ],
+    "description": "Подвижная шарнирная змейка. Приятно извивается в руках, снимает стресс. Кольцо для ключей в комплекте."
+  },
+  {
+    "id": "flexi-tree",
+    "title": "Флекси-брелок «Ёлка»",
+    "category": "flexi",
+    "categoryName": "Брелоки & Флекси",
+    "price": 120,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/flexi-tree.jpg",
+    "images": [
+      "images/items/flexi-tree.jpg",
+      "images/items/flexi-tree_2.jpg"
+    ],
+    "badge": "НОВЫЙ ГОД",
+    "specs": [
+      "Размер: 3.5×4 см",
+      "Подвижная складная конструкция",
+      "Цвета: Зеленый, Белый, Золотой"
+    ],
+    "description": "Забавный новогодний флекси-брелок в виде подвижной ёлочки. Отличный сувенир к зимним праздникам."
+  },
+  {
+    "id": "keychain-clicker",
+    "title": "Брелок-кликер тактильный антистресс",
+    "category": "flexi",
+    "categoryName": "Брелоки & Флекси",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/keychain-clicker.jpg",
+    "images": [
+      "images/items/keychain-clicker.jpg",
+      "images/items/keychain-clicker_2.jpg"
+    ],
+    "badge": "КЛИКЕР",
+    "specs": [
+      "Механический звонкий клик",
+      "Сменный кейкап клавиатурного свитча",
+      "Компактный размер на ключи"
+    ],
+    "description": "Тактильный брелок-кликер со свитчем механической клавиатуры. Идеален для снятия стресса и концентрации."
+  },
+  {
+    "id": "tyubeteyka-keychains",
+    "title": "Сувенирные брелоки «Тюбетейка»",
+    "category": "gifts",
+    "categoryName": "Подарки & Сувениры",
+    "price": 120,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/tyubeteyka-keychains.jpg",
+    "images": [
+      "images/items/tyubeteyka-keychains.jpg",
+      "images/items/tyubeteyka-keychains_2.jpg",
+      "images/items/tyubeteyka-keychains_3.jpg"
+    ],
+    "badge": "ТАТАРСТАН",
+    "specs": [
+      "Национальный колоритный орнамент",
+      "Цвета: Зеленый, Белый, Желтый, Красный",
+      "Прочный термостойкий пластик"
+    ],
+    "description": "Колоритные национальные сувенирные брелоки в форме традиционной тюбетейки. Отличный памятный сувенир из Казани!"
+  },
+  {
+    "id": "statue-horse",
+    "title": "Миниатюрная статуэтка «Лошадь»",
+    "category": "decor",
+    "categoryName": "Декор & Статуэтки",
+    "price": 100,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/statue-horse.jpg",
+    "images": [
+      "images/items/statue-horse.jpg",
+      "images/items/statue-horse_2.jpg",
+      "images/items/statue-horse_3.jpg",
+      "images/items/statue-horse_4.jpg",
+      "images/items/statue-horse_6.jpg"
+    ],
+    "badge": "СУВЕНИР",
+    "specs": [
+      "Высота: 7.5 см",
+      "Опт от 10 шт — скидка",
+      "Цвета: Белый, Черный, Золотистый"
+    ],
+    "description": "Элегантная фигурка благородной лошади высотой 7.5 см. Стильный акцент для интерьера и рабочего стола."
+  },
+  {
+    "id": "bank-military-guard",
+    "title": "Сувенирная копилка «Военный страж» (20 см)",
+    "category": "decor",
+    "categoryName": "Светильники & Копилки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/bank-military-guard.jpg",
+    "images": [
+      "images/items/bank-military-guard.jpg",
+      "images/items/bank-military-guard_2.jpg",
+      "images/items/bank-military-guard_3.jpg",
+      "images/items/bank-military-guard_4.jpg"
+    ],
+    "badge": "ТАКТИЧЕСКИЙ СТИЛЬ",
+    "specs": [
+      "Высота: 20 см",
+      "Цвет: Хаки / Тактический",
+      "Материал: Высокопрочный PET-G"
+    ],
+    "description": "Внушительная сувенирная копилка в тактическом стиле высотой 20 см. Отличный подарок военному, силовику или любителю милитари."
+  },
+  {
+    "id": "cookie-cutters-ny",
+    "title": "Формы для печенья и пряников «Новогодние» (4 шт)",
+    "category": "decor",
+    "categoryName": "Для дома & Кухни",
+    "price": 260,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/cookie-cutters-ny.jpg",
+    "images": [
+      "images/items/cookie-cutters-ny.jpg",
+      "images/items/cookie-cutters-ny_2.jpg",
+      "images/items/cookie-cutters-ny_3.jpg",
+      "images/items/cookie-cutters-ny_4.jpg",
+      "images/items/cookie-cutters-ny_5.jpg",
+      "images/items/cookie-cutters-ny_6.jpg"
+    ],
+    "badge": "КУЛИНАРИЯ",
+    "specs": [
+      "В комплекте: 4 фигурные вырубки (елка, пряничный человечек, звезда, шар)",
+      "Безопасный пищевой пластик",
+      "Четкий фигурный срез теста"
+    ],
+    "description": "Набор из 4 фигурных форм-вырубок для выпечки имбирных пряников и печенья. Создайте праздник на кухне вместе с детьми!"
+  },
+  {
+    "id": "tree-stand-decor",
+    "title": "Новогодняя ажурная ёлочка на подставке (16×12 см)",
+    "category": "gifts",
+    "categoryName": "Новый Год & Праздники",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/tree-stand-decor.jpg",
+    "images": [
+      "images/items/tree-stand-decor.jpg",
+      "images/items/tree-stand-decor_2.jpg",
+      "images/items/tree-stand-decor_3.jpg"
+    ],
+    "badge": "ПРАЗДНИК",
+    "specs": [
+      "Размер: 16×12 см",
+      "Устойчивая съемная подставка",
+      "Возможность нанесения индивидуального текста"
+    ],
+    "description": "Изящная настольная новогодняя ёлочка с резным узором на подставке. Создает праздничное настроение дома и в офисе."
+  },
+  {
+    "id": "snowflakes-set-14",
+    "title": "Набор ажурных снежинок на ёлку (комплект 14 шт)",
+    "category": "gifts",
+    "categoryName": "Новый Год & Праздники",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/snowflakes-set-14.jpg",
+    "images": [
+      "images/items/snowflakes-set-14.jpg",
+      "images/items/snowflakes-set-14_2.jpg",
+      "images/items/snowflakes-set-14_3.jpg",
+      "images/items/snowflakes-set-14_4.jpg"
+    ],
+    "badge": "КОМПЛЕКТ 14 ШТ",
+    "specs": [
+      "В комплекте: 14 уникальных ажурных снежинок",
+      "Тонкий, легкий и небьющийся пластик",
+      "Белоснежный праздничный цвет"
+    ],
+    "description": "Комплект из 14 тонких изящных снежинок для украшения новогодней ели или интерьера. В отличие от стекла, абсолютно не бьются!"
+  },
+  {
+    "id": "spinning-bauble",
+    "title": "Ёлочный шар-вертушка с вращением (именной)",
+    "category": "gifts",
+    "categoryName": "Новый Год & Праздники",
+    "price": 80,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/spinning-bauble.jpg",
+    "images": [
+      "images/items/spinning-bauble.jpg",
+      "images/items/spinning-bauble_2.jpg",
+      "images/items/spinning-bauble_3.jpg",
+      "images/items/spinning-bauble_4.jpg",
+      "images/items/spinning-bauble_5.jpg",
+      "images/items/spinning-bauble_6.jpg"
+    ],
+    "badge": "ВЕРТУШКА",
+    "specs": [
+      "Вращающаяся внутренняя часть",
+      "Возможность нанесения имени или пожелания",
+      "Цена за 1 шт — 80 руб"
+    ],
+    "description": "Необычное новогоднее украшение: внутренний элемент свободно вращается при малейшем движении воздуха. Текст или имя редактируются!"
+  },
+  {
+    "id": "stars-set-5",
+    "title": "Новогодние звезды на ёлку (комплект 5 шт)",
+    "category": "gifts",
+    "categoryName": "Новый Год & Праздники",
+    "price": 200,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/stars-set-5.jpg",
+    "images": [
+      "images/items/stars-set-5.jpg",
+      "images/items/stars-set-5_2.jpg",
+      "images/items/stars-set-5_3.jpg",
+      "images/items/stars-set-5_4.jpg",
+      "images/items/stars-set-5_5.jpg",
+      "images/items/stars-set-5_6.jpg"
+    ],
+    "badge": "КОМПЛЕКТ 5 ШТ",
+    "specs": [
+      "Размер 1 шт: 11.5×13 см",
+      "В комплекте: 5 объемных звезд",
+      "Цена комплекта: 200 руб"
+    ],
+    "description": "Крупные новогодние звезды размером 11.5×13 см. Красиво отражают свет гирлянд, безопасны для домов с детьми и питомцами."
+  },
+  {
+    "id": "s-hooks-set-56",
+    "title": "S-образные крючки для ёлочных игрушек (56 шт)",
+    "category": "gifts",
+    "categoryName": "Новый Год & Праздники",
+    "price": 150,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/s-hooks-set-56.jpg",
+    "images": [
+      "images/items/s-hooks-set-56.jpg",
+      "images/items/s-hooks-set-56_2.jpg",
+      "images/items/s-hooks-set-56_3.jpg",
+      "images/items/s-hooks-set-56_4.jpg",
+      "images/items/s-hooks-set-56_5.jpg",
+      "images/items/s-hooks-set-56_6.jpg"
+    ],
+    "badge": "56 ШТУК",
+    "specs": [
+      "1 комплект — 56 прочных крючков",
+      "Цена: 150 руб, опт от 10 наборов — 120 руб",
+      "Удобное надежное подвешивание игрушек"
+    ],
+    "description": "Удобные изящные крючки для подвешивания ёлочных шаров и украшений на ветки. Больше никакой возни с нитками!"
+  },
+  {
+    "id": "cake-toppers",
+    "title": "Праздничные топперы для тортов и капкейков",
+    "category": "gifts",
+    "categoryName": "Подарки & Сувениры",
+    "price": 100,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/cake-toppers.jpg",
+    "images": [
+      "images/items/cake-toppers.jpg",
+      "images/items/cake-toppers_2.jpg",
+      "images/items/cake-toppers_3.jpg",
+      "images/items/cake-toppers_4.jpg",
+      "images/items/cake-toppers_5.jpg",
+      "images/items/cake-toppers_6.jpg"
+    ],
+    "badge": "ДЛЯ ТОРТОВ",
+    "specs": [
+      "Цена за шт: 100 руб",
+      "Безопасный пищевой полимер",
+      "Бабочки, надписи «С Днем Рождения», юбилеи"
+    ],
+    "description": "Яркие фигурные топперы для украшения праздничных тортов, пирожных и кексов. Добавят торту стильный авторский акцент."
+  },
+  {
+    "id": "horseshoe-2026",
+    "title": "Сувенирная подкова на счастье и удачу",
+    "category": "gifts",
+    "categoryName": "Подарки & Сувениры",
+    "price": 50,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/horseshoe-2026.jpg",
+    "images": [
+      "images/items/horseshoe-2026.jpg",
+      "images/items/horseshoe-2026_2.jpg",
+      "images/items/horseshoe-2026_3.jpg",
+      "images/items/horseshoe-2026_4.jpg",
+      "images/items/horseshoe-2026_5.jpg",
+      "images/items/horseshoe-2026_6.jpg"
+    ],
+    "badge": "НА УДАЧУ",
+    "specs": [
+      "Размер изделия: 6×6.5 см",
+      "Цена за 1 шт: всего 50 руб",
+      "Символ достатка и благополучия в доме"
+    ],
+    "description": "Сувенирная подкова-оберег для дома или в салон автомобиля. Прекрасный недорогой сувенир коллегам и друзьям."
+  },
+  {
+    "id": "easter-set",
+    "title": "Пасхальные праздничные наборы под яйца и кулич",
+    "category": "gifts",
+    "categoryName": "Подарки & Сувениры",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/easter-set.jpg",
+    "images": [
+      "images/items/easter-set.jpg",
+      "images/items/easter-set_2.jpg",
+      "images/items/easter-set_3.jpg",
+      "images/items/easter-set_4.jpg",
+      "images/items/easter-set_5.jpg",
+      "images/items/easter-set_6.jpg"
+    ],
+    "badge": "ПАСХА",
+    "specs": [
+      "Фигурные подставки под крашеные яйца",
+      "Праздничный весенний дизайн",
+      "Легко моется, не боится влаги"
+    ],
+    "description": "Праздничные пасхальные подставки и подносы для сервировки праздничного стола с куличом и пасхальными яйцами."
+  },
+  {
+    "id": "qr-logo-keychain",
+    "title": "Брелоки с индивидуальным QR-кодом и логотипом",
+    "category": "organizers",
+    "categoryName": "Органайзеры & Бизнес",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/qr-logo-keychain.jpg",
+    "images": [
+      "images/items/qr-logo-keychain.jpg",
+      "images/items/qr-logo-keychain_2.jpg",
+      "images/items/qr-logo-keychain_3.jpg",
+      "images/items/qr-logo-keychain_4.jpg",
+      "images/items/qr-logo-keychain_5.jpg"
+    ],
+    "badge": "С ВАШИМ QR/ЛОГО",
+    "specs": [
+      "Размер: от 4.5×5 см",
+      "Нанесение рабочего QR-кода на оплату, Telegram или сайт",
+      "Нанесение логотипа компании заказчика"
+    ],
+    "description": "Изготовление стильных корпоративных брелоков с вашим логотипом или сканируемым QR-кодом (на чаевые, соцсети, визитку, сайт)."
+  },
+  {
+    "id": "nightlight-base",
+    "title": "Основа для светильника-ночника + подставка",
+    "category": "lanterns",
+    "categoryName": "Светильники & Копилки",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/nightlight-base.jpg",
+    "images": [
+      "images/items/nightlight-base.jpg",
+      "images/items/nightlight-base_2.jpg",
+      "images/items/nightlight-base_3.jpg",
+      "images/items/nightlight-base_4.jpg",
+      "images/items/nightlight-base_5.jpg",
+      "images/items/nightlight-base_6.jpg"
+    ],
+    "badge": "ДЛЯ ТВОРЧЕСТВА",
+    "specs": [
+      "Пазы под установку акрилового стекла и LED-ленты",
+      "Устойчивое основание",
+      "Материал: PET-G пластик"
+    ],
+    "description": "Основа-корпус для сборки настольного светильника или ночника. Предусмотрен паз для светодиодной подсветки."
+  },
+  {
+    "id": "house-number-plate",
+    "title": "Адресная табличка на дом (20×20 см)",
+    "category": "decor",
+    "categoryName": "Декор & Дом",
+    "price": 0,
+    "oldPrice": 0,
+    "rating": 5.0,
+    "reviews": 12,
+    "image": "images/items/house-number-plate.jpg",
+    "images": [
+      "images/items/house-number-plate.jpg",
+      "images/items/house-number-plate_2.jpg"
+    ],
+    "badge": "ПОД ЗАКАЗ",
+    "specs": [
+      "Размер: 20×20 см",
+      "Улица и номер дома под заказ",
+      "Всепогодный стойкий пластик"
+    ],
+    "description": "Контрастная адресная табличка на частный дом или забор с номером и названием улицы. Не выгорает на солнце и не ржавеет."
   }
 ]
