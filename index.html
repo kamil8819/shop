@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+  <title>3D-Печать | Каталог & Магазин</title>
+  <!-- Telegram Web App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: var(--tg-theme-bg-color, #0f172a);
+      color: var(--tg-theme-text-color, #f8fafc);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .tg-card {
+      background-color: var(--tg-theme-secondary-bg-color, #1e293b);
+    }
+    .tg-button {
+      background-color: var(--tg-theme-button-color, #3b82f6);
+      color: var(--tg-theme-button-text-color, #ffffff);
+    }
+  </style>
+</head>
+<body class="antialiased pb-28 select-none">
+
+  <!-- Шапка магазина -->
+  <header class="sticky top-0 z-30 tg-card border-b border-slate-700/50 backdrop-blur px-4 py-3 flex items-center justify-between shadow-md">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg">
+        <i class="fa-solid fa-cube text-xl"></i>
+      </div>
+      <div>
+        <h1 class="font-bold text-base leading-tight">3D-Печать | Студия</h1>
+        <p class="text-xs text-slate-400">@printing03d • Под заказ</p>
+      </div>
+    </div>
+    
+    <!-- Кнопка корзины в шапке -->
+    <button onclick="openCart()" class="relative p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 transition active:scale-95">
+      <i class="fa-solid fa-cart-shopping text-lg"></i>
+      <span id="cartBadge" class="hidden absolute -top-1 -right-1 bg-blue-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-slate-900">0</span>
+    </button>
+  </header>
+
+  <!-- Горизонтальные категории -->
+  <nav class="sticky top-[61px] z-20 tg-card px-3 py-2 border-b border-slate-700/40">
+    <div class="flex gap-2 overflow-x-auto custom-scroll py-1" id="categoryTabs">
+      <button onclick="setCategory('all')" class="cat-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-blue-600 text-white transition">Все товары</button>
+      <button onclick="setCategory('cosplay')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">👑 Косплей</button>
+      <button onclick="setCategory('figurines')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">🗿 Фигурки</button>
+      <button onclick="setCategory('home')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">🪴 Для дома</button>
+      <button onclick="setCategory('engineering')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">⚙️ Шестерни/Авто</button>
+      <button onclick="openCalculatorTab()" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-indigo-600/30 text-indigo-400 border border-indigo-500/30 transition">📐 Калькулятор печати</button>
+    </div>
+  </nav>
+
+  <!-- Секция товаров -->
+  <main class="p-3" id="shopView">
+    <div class="grid grid-cols-2 gap-3" id="productsGrid">
+      <!-- Товары рендерятся через JavaScript -->
+    </div>
+  </main>
+
+  <!-- Секция калькулятора 3D-печати -->
+  <section class="p-4 hidden" id="calculatorView">
+    <div class="tg-card rounded-2xl p-4 border border-slate-700 shadow-xl space-y-5">
+      <div class="flex items-center gap-3 border-b border-slate-700 pb-3">
+        <i class="fa-solid fa-calculator text-blue-400 text-xl"></i>
+        <div>
+          <h2 class="font-bold text-base">Экспресс-расчет 3D-печати</h2>
+          <p class="text-xs text-slate-400">Ориентировочная стоимость по весу и материалу</p>
+        </div>
+      </div>
+
+      <!-- Выбор пластика -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-2">Материал печати:</label>
+        <div class="grid grid-cols-2 gap-2" id="calcMaterialOptions">
+          <button type="button" onclick="selectCalcMat('petg', 7)" class="calc-mat-btn active p-2.5 rounded-xl border border-blue-500 bg-blue-500/10 text-left text-xs">
+            <div class="font-bold text-blue-400">PET-G (Хит)</div>
+            <div class="text-[10px] text-slate-400">Прочный, ударостойкий</div>
+          </button>
+          <button type="button" onclick="selectCalcMat('pla', 6)" class="calc-mat-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-left text-xs">
+            <div class="font-bold text-slate-200">PLA Стандарт</div>
+            <div class="text-[10px] text-slate-400">Для фигурок и декора</div>
+          </button>
+          <button type="button" onclick="selectCalcMat('nylon', 14)" class="calc-mat-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-left text-xs">
+            <div class="font-bold text-slate-200">Nylon / Carbon</div>
+            <div class="text-[10px] text-slate-400">Шестерни, высокие нагрузки</div>
+          </button>
+          <button type="button" onclick="selectCalcMat('resin', 18)" class="calc-mat-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-left text-xs">
+            <div class="font-bold text-slate-200">Фотополимер SLA</div>
+            <div class="text-[10px] text-slate-400">Ювелирная точность 50 мкм</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Слайдер веса -->
+      <div>
+        <div class="flex justify-between items-center text-xs font-semibold mb-2">
+          <span>Примерный вес детали:</span>
+          <span class="text-blue-400 text-sm font-bold" id="weightDisplay">60 г</span>
+        </div>
+        <input type="range" id="weightSlider" min="10" max="600" step="5" value="60" oninput="updateCalculator()" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500">
+        <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+          <span>10 г (клипса)</span>
+          <span>150 г (фигурка)</span>
+          <span>600 г (шлем/корпус)</span>
+        </div>
+      </div>
+
+      <!-- Дополнительные опции -->
+      <div class="space-y-2 pt-2 border-t border-slate-800 text-xs">
+        <label class="flex items-center gap-2.5 cursor-pointer">
+          <input type="checkbox" id="calcModelingCheck" onchange="updateCalculator()" class="rounded bg-slate-700 border-slate-600 text-blue-600 focus:ring-0">
+          <span>Нужно 3D-моделирование по чертежу / обломкам (+600 ₽)</span>
+        </label>
+        <label class="flex items-center gap-2.5 cursor-pointer">
+          <input type="checkbox" id="calcPostprocessCheck" onchange="updateCalculator()" class="rounded bg-slate-700 border-slate-600 text-blue-600 focus:ring-0">
+          <span>Грунтовка и ручная покраска акрилом (+900 ₽)</span>
+        </label>
+      </div>
+
+      <!-- Итог расчета -->
+      <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-700 flex items-center justify-between">
+        <div>
+          <span class="text-[11px] text-slate-400 block">Расчетная стоимость:</span>
+          <span class="text-xl font-extrabold text-white" id="calcTotal">420 ₽</span>
+        </div>
+        <button onclick="orderFromCalculator()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition active:scale-95 shadow-lg shadow-blue-500/20">
+          Заказать расчет
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Модальное окно просмотра товара -->
+  <div id="productModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center">
+    <div class="tg-card w-full max-w-md max-h-[90vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl p-4 border-t sm:border border-slate-700 shadow-2xl space-y-4">
+      <div class="flex justify-between items-start">
+        <span id="modalBadge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400"></span>
+        <button onclick="closeProductModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <img id="modalImage" class="w-full h-56 object-cover rounded-xl shadow-lg" src="" alt="">
+
+      <div>
+        <h3 id="modalTitle" class="text-lg font-bold"></h3>
+        <div class="flex items-center gap-3 mt-1">
+          <span id="modalPrice" class="text-xl font-black text-blue-400"></span>
+          <span id="modalOldPrice" class="text-sm text-slate-500 line-through"></span>
+          <div class="flex items-center text-amber-400 text-xs gap-1 ml-auto">
+            <i class="fa-solid fa-star"></i>
+            <span id="modalRating"></span>
+            <span class="text-slate-500" id="modalReviews"></span>
+          </div>
+        </div>
+      </div>
+
+      <p id="modalDescription" class="text-xs text-slate-300 leading-relaxed"></p>
+
+      <!-- Характеристики -->
+      <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800/80">
+        <h4 class="text-xs font-bold text-slate-300 mb-1.5">Характеристики изделия:</h4>
+        <ul id="modalSpecs" class="space-y-1 text-xs text-slate-400"></ul>
+      </div>
+
+      <!-- Варианты исполнения -->
+      <div id="modalOptionsWrapper" class="hidden">
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5" id="modalOptionName"></label>
+        <div class="space-y-1.5" id="modalOptionsList"></div>
+      </div>
+
+      <!-- Кнопка добавления в корзину -->
+      <button onclick="addCurrentToCart()" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition active:scale-95 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+        <i class="fa-solid fa-cart-plus"></i>
+        <span>Добавить в заказ</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно Корзины / Оформления -->
+  <div id="cartModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center">
+    <div class="tg-card w-full max-w-md max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl p-4 border-t sm:border border-slate-700 shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+        <h3 class="font-bold text-base flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-blue-400"></i>
+          <span>Корзина заказа</span>
+        </h3>
+        <button onclick="closeCart()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Список позиций в корзине -->
+      <div id="cartItemsList" class="divide-y divide-slate-800 max-h-56 overflow-y-auto custom-scroll my-3">
+        <!-- Позиции через JS -->
+      </div>
+
+      <!-- Пустая корзина -->
+      <div id="cartEmpty" class="py-8 text-center text-slate-500 hidden">
+        <i class="fa-solid fa-box-open text-4xl mb-2 block"></i>
+        <p class="text-xs">В корзине пока ничего нет</p>
+      </div>
+
+      <!-- Форма оформления -->
+      <div id="checkoutForm" class="space-y-3 pt-2 border-t border-slate-800 text-xs">
+        <div>
+          <label class="block text-slate-400 mb-1">Ваше имя:</label>
+          <input type="text" id="orderName" placeholder="Иван" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Телефон или Telegram (@username):</label>
+          <input type="text" id="orderContact" placeholder="+7 999 123-45-67 или @nick" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Способ доставки:</label>
+          <div class="w-full bg-slate-900 border border-blue-500/50 rounded-xl px-3 py-2.5 text-white flex items-center justify-between text-xs">
+            <span class="font-bold flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              Доставка Ozon (в пункт выдачи ПВЗ)
+            </span>
+            <input type="hidden" id="orderDelivery" value="Ozon (ПВЗ)">
+            <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-bold">OZON</span>
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-400 mb-1">Город и адрес пункта выдачи Ozon:</label>
+          <input type="text" id="orderAddress" placeholder="г. Казань, ул. Баумана, д. 15 (ПВЗ Ozon)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+        </div>
+      </div>
+
+      <!-- Итог и кнопка отправки -->
+      <div class="mt-4 pt-3 border-t border-slate-700 flex items-center justify-between">
+        <div>
+          <span class="text-[11px] text-slate-400 block">К оплате:</span>
+          <span class="text-xl font-extrabold text-blue-400" id="cartTotalDisplay">0 ₽</span>
+        </div>
+        <button id="submitOrderBtn" onclick="submitOrder()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition active:scale-95 shadow-lg shadow-blue-500/25">
+          Отправить заказ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Плавающая нижняя панель корзины -->
+  <div id="bottomBar" class="fixed bottom-3 inset-x-3 z-40 hidden">
+    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between backdrop-blur">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-bold text-sm" id="bottomCartCount">1</div>
+        <div>
+          <div class="text-[11px] text-blue-100 font-medium leading-none">В заказе на сумму:</div>
+          <div class="text-base font-extrabold" id="bottomCartSum">2 900 ₽</div>
+        </div>
+      </div>
+      <button onclick="openCart()" class="px-4 py-2 bg-white text-blue-700 font-bold text-xs rounded-xl shadow active:scale-95">
+        Оформить →
+      </button>
+    </div>
+  </div>
+
+  <!-- JavaScript магазина -->
+  <script>
+    // 1. Инициализация Telegram WebApp
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      // Заполняем контактные данные если открыто через Telegram
+      const user = tg.initDataUnsafe?.user;
+      if (user) {
+        const contactField = document.getElementById('orderContact');
+        const nameField = document.getElementById('orderName');
+        if (nameField && user.first_name) nameField.value = user.first_name + (user.last_name ? ' ' + user.last_name : '');
+        if (contactField && user.username) contactField.value = '@' + user.username;
+      }
+    }
+
+    function hapticFeedback(type = 'light') {
+      try {
+        if (tg && tg.HapticFeedback) {
+          tg.HapticFeedback.impactOccurred(type);
+        }
+      } catch (e) {}
+    }
+
+    // 2. Каталог товаров
+    let products = [];
+    let currentCategory = 'all';
+    let cart = [];
+    let activeProduct = null;
+    let selectedOptionIndex = 0;
+
+    // Параметры калькулятора
+    let calcPricePerGram = 7;
+
+    // Загрузка товаров из JSON
+    async function loadProducts() {
+      try {
+        const resp = await fetch('products.json');
+        products = await resp.json();
+        renderProducts();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const pId = urlParams.get('p') || urlParams.get('product');
+        if (pId) {
+          openProductModal(pId);
+        }
+      } catch (e) {
+        console.error('Ошибка загрузки products.json:', e);
+      }
+    }
+
+    function setCategory(cat) {
+      hapticFeedback('selection');
+      currentCategory = cat;
+      document.getElementById('shopView').classList.remove('hidden');
+      document.getElementById('calculatorView').classList.add('hidden');
+
+      document.querySelectorAll('#categoryTabs .cat-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      event.target.classList.remove('bg-slate-800', 'text-slate-300');
+      event.target.classList.add('bg-blue-600', 'text-white');
+
+      renderProducts();
+    }
+
+    function openCalculatorTab() {
+      hapticFeedback('selection');
+      document.getElementById('shopView').classList.add('hidden');
+      document.getElementById('calculatorView').classList.remove('hidden');
+
+      document.querySelectorAll('#categoryTabs .cat-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      event.target.classList.add('bg-blue-600', 'text-white');
+      updateCalculator();
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const filtered = currentCategory === 'all' 
+        ? products 
+        : products.filter(p => p.category === currentCategory);
+
+      grid.innerHTML = filtered.map(p => `
+        <div onclick="openProductModal('${p.id}')" class="tg-card rounded-2xl overflow-hidden border border-slate-700/60 shadow-lg flex flex-col justify-between active:scale-[0.98] transition cursor-pointer">
+          <div class="relative">
+            <img src="${p.image}" alt="${p.title}" class="w-full h-36 object-cover bg-slate-900">
+            ${p.badge ? `<span class="absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/90 text-white backdrop-blur shadow">${p.badge}</span>` : ''}
+          </div>
+          <div class="p-2.5 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-bold text-xs line-clamp-2 leading-tight">${p.title}</h3>
+              <div class="flex items-center gap-1 text-[10px] text-amber-400 mt-1">
+                <i class="fa-solid fa-star"></i>
+                <span>${p.rating}</span>
+                <span class="text-slate-500">(${p.reviews})</span>
+              </div>
+            </div>
+            <div class="mt-2.5 flex items-center justify-between pt-1 border-t border-slate-800">
+              <div>
+                <span class="text-sm font-extrabold text-blue-400">${p.price.toLocaleString()} ₽</span>
+                ${p.oldPrice ? `<span class="text-[10px] text-slate-500 line-through block leading-none">${p.oldPrice.toLocaleString()} ₽</span>` : ''}
+              </div>
+              <button onclick="event.stopPropagation(); quickAddToCart('${p.id}')" class="w-7 h-7 rounded-lg bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-xs active:scale-90 transition shadow">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 3. Модалка товара
+    function openProductModal(id) {
+      hapticFeedback('light');
+      activeProduct = products.find(p => p.id === id);
+      if (!activeProduct) return;
+
+      selectedOptionIndex = 0;
+      document.getElementById('modalImage').src = activeProduct.image;
+      document.getElementById('modalTitle').textContent = activeProduct.title;
+      document.getElementById('modalBadge').textContent = activeProduct.badge || activeProduct.categoryName;
+      document.getElementById('modalPrice').textContent = activeProduct.price.toLocaleString() + ' ₽';
+      document.getElementById('modalOldPrice').textContent = activeProduct.oldPrice ? activeProduct.oldPrice.toLocaleString() + ' ₽' : '';
+      document.getElementById('modalRating').textContent = activeProduct.rating;
+      document.getElementById('modalReviews').textContent = `(${activeProduct.reviews} отзывов)`;
+      document.getElementById('modalDescription').textContent = activeProduct.description;
+
+      const specsList = document.getElementById('modalSpecs');
+      specsList.innerHTML = (activeProduct.specs || []).map(s => `<li>• ${s}</li>`).join('');
+
+      const optWrapper = document.getElementById('modalOptionsWrapper');
+      if (activeProduct.options && activeProduct.options.length > 0) {
+        optWrapper.classList.remove('hidden');
+        const opt = activeProduct.options[0];
+        document.getElementById('modalOptionName').textContent = opt.name + ':';
+        document.getElementById('modalOptionsList').innerHTML = opt.choices.map((c, idx) => `
+          <button type="button" onclick="selectOption(${idx})" class="opt-btn w-full p-2 rounded-xl border text-xs text-left flex justify-between items-center transition ${idx === 0 ? 'border-blue-500 bg-blue-500/10 text-blue-400' : 'border-slate-700 bg-slate-800 text-slate-300'}">
+            <span>${c.label}</span>
+            <span class="font-bold">${c.priceDelta === 0 ? 'Базовая' : (c.priceDelta > 0 ? '+' + c.priceDelta + ' ₽' : c.priceDelta + ' ₽')}</span>
+          </button>
+        `).join('');
+      } else {
+        optWrapper.classList.add('hidden');
+      }
+
+      document.getElementById('productModal').classList.remove('hidden');
+    }
+
+    function selectOption(idx) {
+      hapticFeedback('selection');
+      selectedOptionIndex = idx;
+      document.querySelectorAll('#modalOptionsList .opt-btn').forEach((btn, i) => {
+        if (i === idx) {
+          btn.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-400');
+          btn.classList.remove('border-slate-700', 'bg-slate-800', 'text-slate-300');
+        } else {
+          btn.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-400');
+          btn.classList.add('border-slate-700', 'bg-slate-800', 'text-slate-300');
+        }
+      });
+      // Обновляем цену в модалке с учетом дельты
+      const opt = activeProduct.options[0].choices[idx];
+      const finalPrice = activeProduct.price + opt.priceDelta;
+      document.getElementById('modalPrice').textContent = finalPrice.toLocaleString() + ' ₽';
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.add('hidden');
+    }
+
+    // 4. Логика корзины
+    function quickAddToCart(id) {
+      hapticFeedback('medium');
+      const item = products.find(p => p.id === id);
+      if (!item) return;
+      addToCart(item, item.price, 'Стандарт');
+    }
+
+    function addCurrentToCart() {
+      hapticFeedback('medium');
+      if (!activeProduct) return;
+      let price = activeProduct.price;
+      let optLabel = 'Стандарт';
+      if (activeProduct.options && activeProduct.options.length > 0) {
+        const choice = activeProduct.options[0].choices[selectedOptionIndex];
+        price += choice.priceDelta;
+        optLabel = choice.label;
+      }
+      addToCart(activeProduct, price, optLabel);
+      closeProductModal();
+    }
+
+    function addToCart(product, price, optionName) {
+      const existing = cart.find(c => c.id === product.id && c.option === optionName);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: product.id,
+          title: product.title,
+          price: price,
+          option: optionName,
+          image: product.image,
+          qty: 1
+        });
+      }
+      updateCartUI();
+    }
+
+    function changeQty(index, delta) {
+      hapticFeedback('selection');
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+      renderCartItems();
+    }
+
+    function updateCartUI() {
+      const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
+      const totalSum = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+      // Бейдж в шапке
+      const badge = document.getElementById('cartBadge');
+      if (totalCount > 0) {
+        badge.textContent = totalCount;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+
+      // Нижняя плашка
+      const bar = document.getElementById('bottomBar');
+      if (totalCount > 0) {
+        document.getElementById('bottomCartCount').textContent = totalCount;
+        document.getElementById('bottomCartSum').textContent = totalSum.toLocaleString() + ' ₽';
+        bar.classList.remove('hidden');
+      } else {
+        bar.classList.add('hidden');
+      }
+
+      // Сумма в модалке корзины
+      document.getElementById('cartTotalDisplay').textContent = totalSum.toLocaleString() + ' ₽';
+    }
+
+    function openCart() {
+      hapticFeedback('light');
+      renderCartItems();
+      document.getElementById('cartModal').classList.remove('hidden');
+    }
+
+    function closeCart() {
+      document.getElementById('cartModal').classList.add('hidden');
+    }
+
+    function renderCartItems() {
+      const container = document.getElementById('cartItemsList');
+      const emptyBox = document.getElementById('cartEmpty');
+      const formBox = document.getElementById('checkoutForm');
+      const submitBtn = document.getElementById('submitOrderBtn');
+
+      if (cart.length === 0) {
+        container.innerHTML = '';
+        emptyBox.classList.remove('hidden');
+        formBox.classList.add('hidden');
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50');
+        return;
+      }
+
+      emptyBox.classList.add('hidden');
+      formBox.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-50');
+
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="py-2.5 flex items-center justify-between gap-3">
+          <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover bg-slate-900">
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-xs truncate">${item.title}</h4>
+            <p class="text-[10px] text-slate-400 truncate">${item.option}</p>
+            <span class="text-xs font-extrabold text-blue-400">${(item.price * item.qty).toLocaleString()} ₽</span>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900 rounded-lg p-1 border border-slate-700">
+            <button onclick="changeQty(${idx}, -1)" class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs active:scale-90">-</button>
+            <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+            <button onclick="changeQty(${idx}, 1)" class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs active:scale-90">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 5. Калькулятор 3D-печати
+    function selectCalcMat(matType, priceGram) {
+      hapticFeedback('selection');
+      calcPricePerGram = priceGram;
+      document.querySelectorAll('#calcMaterialOptions .calc-mat-btn').forEach(btn => {
+        btn.classList.remove('border-blue-500', 'bg-blue-500/10');
+        btn.classList.add('border-slate-700', 'bg-slate-800');
+        btn.querySelector('div:first-child').classList.remove('text-blue-400');
+        btn.querySelector('div:first-child').classList.add('text-slate-200');
+      });
+      event.currentTarget.classList.add('border-blue-500', 'bg-blue-500/10');
+      event.currentTarget.classList.remove('border-slate-700', 'bg-slate-800');
+      event.currentTarget.querySelector('div:first-child').classList.add('text-blue-400');
+      event.currentTarget.querySelector('div:first-child').classList.remove('text-slate-200');
+      updateCalculator();
+    }
+
+    function updateCalculator() {
+      const weight = parseInt(document.getElementById('weightSlider').value, 10);
+      document.getElementById('weightDisplay').textContent = weight + ' г';
+
+      let total = weight * calcPricePerGram;
+      if (document.getElementById('calcModelingCheck').checked) total += 600;
+      if (document.getElementById('calcPostprocessCheck').checked) total += 900;
+
+      document.getElementById('calcTotal').textContent = total.toLocaleString() + ' ₽';
+    }
+
+    function orderFromCalculator() {
+      hapticFeedback('medium');
+      const weight = document.getElementById('weightSlider').value;
+      const total = parseInt(document.getElementById('calcTotal').textContent.replace(/\D/g, ''), 10);
+      const mod = document.getElementById('calcModelingCheck').checked ? '+ Моделирование' : '';
+      const post = document.getElementById('calcPostprocessCheck').checked ? '+ Покраска' : '';
+
+      cart.push({
+        id: 'calc-custom',
+        title: 'Индивидуальная 3D-печать по расчету',
+        price: total,
+        option: `Вес: ${weight}г ${mod} ${post}`.trim(),
+        image: 'images/gears.jpg',
+        qty: 1
+      });
+
+      updateCartUI();
+      openCart();
+    }
+
+    // 6. Отправка заказа в Telegram
+    async function submitOrder() {
+      hapticFeedback('success');
+      const name = document.getElementById('orderName').value.trim();
+      const contact = document.getElementById('orderContact').value.trim();
+      const delivery = document.getElementById('orderDelivery').value;
+      const address = document.getElementById('orderAddress').value.trim();
+
+      if (!name || !contact) {
+        alert('Пожалуйста, укажите имя и контакт (телефон или Telegram) для связи!');
+        return;
+      }
+
+      const totalSum = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+      const orderData = {
+        type: "NEW_ORDER",
+        date: new Date().toLocaleString('ru-RU'),
+        customer: { name, contact },
+        delivery: { method: delivery, address: address || "Уточнить у менеджера" },
+        items: cart.map(i => ({ title: i.title, option: i.option, qty: i.qty, sum: i.price * i.qty })),
+        totalSum: totalSum
+      };
+
+      // 1. Всегда отправляем на сервер для мгновенного уведомления владельца в Telegram
+      try {
+        await fetch('/api/order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(orderData)
+        });
+      } catch (e) {
+        console.log('API notification error:', e);
+      }
+
+      // 2. Если открыто через ReplyKeyboard / MenuButton — передаем данные боту
+      try {
+        if (tg && tg.sendData) {
+          tg.sendData(JSON.stringify(orderData));
+        }
+      } catch (e) {
+        console.log('tg.sendData fallback:', e);
+      }
+
+      alert(`🎉 Спасибо, ${name}! Заказ на ${totalSum.toLocaleString()} ₽ оформлен. Менеджер свяжется с вами в течение 10 минут!`);
+      cart = [];
+      updateCartUI();
+      closeCart();
+      if (tg && tg.close) {
+        tg.close();
+      }
+    }
+
+    // Старт
+    loadProducts();
+  </script>
+</body>
+</html>
