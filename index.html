@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-  <title>3D-Печать | Каталог & Магазин</title>
+  <title>3D-Печать | Студия & Магазин</title>
   <!-- Telegram Web App SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <!-- Tailwind CSS -->
@@ -17,10 +17,10 @@
         extend: {
           colors: {
             brand: {
-              50: '#eff6ff',
+              50: '#f0fdf4',
               500: '#3b82f6',
               600: '#2563eb',
-              700: '#1d4ed8',
+              700: '#1d4ed8'
             }
           }
         }
@@ -29,7 +29,7 @@
   </script>
   <style>
     body {
-      background-color: var(--tg-theme-bg-color, #0f172a);
+      background-color: var(--tg-theme-bg-color, #0b1120);
       color: var(--tg-theme-text-color, #f8fafc);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
@@ -38,94 +38,137 @@
       display: none;
     }
     .tg-card {
-      background-color: var(--tg-theme-secondary-bg-color, #1e293b);
+      background-color: var(--tg-theme-secondary-bg-color, #131d31);
     }
-    .tg-button {
-      background-color: var(--tg-theme-button-color, #3b82f6);
-      color: var(--tg-theme-button-text-color, #ffffff);
+    .story-ring {
+      background: linear-gradient(45deg, #f59e0b, #ec4899, #3b82f6);
     }
   </style>
 </head>
-<body class="antialiased pb-28 select-none">
+<body class="antialiased pb-24 select-none">
 
-  <!-- Шапка магазина -->
-  <header class="sticky top-0 z-30 tg-card border-b border-slate-700/50 backdrop-blur px-4 py-3 flex items-center justify-between shadow-md">
+  <!-- Шапка приложения (в стиле GigaChat Mini App) -->
+  <header class="sticky top-0 z-30 tg-card/95 border-b border-slate-800/80 backdrop-blur-md px-4 py-3 flex items-center justify-between shadow-lg">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg">
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
         <i class="fa-solid fa-cube text-xl"></i>
       </div>
       <div>
-        <h1 class="font-bold text-base leading-tight">3D-Печать | Студия</h1>
-        <p class="text-xs text-slate-400">@printing03d • Под заказ</p>
+        <div class="flex items-center gap-1.5">
+          <h1 class="font-extrabold text-sm tracking-tight text-white">3D-Печать | Мастерская</h1>
+          <i class="fa-solid fa-circle-check text-blue-500 text-xs"></i>
+        </div>
+        <p class="text-[11px] text-slate-400">@printing03d • Доставка Ozon</p>
       </div>
     </div>
     
-    <!-- Кнопка корзины в шапке -->
-    <button onclick="openCart()" class="relative p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 transition active:scale-95">
-      <i class="fa-solid fa-cart-shopping text-lg"></i>
-      <span id="cartBadge" class="hidden absolute -top-1 -right-1 bg-blue-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ring-2 ring-slate-900">0</span>
+    <!-- Корзина в шапке -->
+    <button onclick="openCart()" class="relative p-2.5 rounded-xl bg-slate-800/90 text-slate-200 hover:text-white transition active:scale-95 border border-slate-700/60">
+      <i class="fa-solid fa-bag-shopping text-base"></i>
+      <span id="cartBadge" class="hidden absolute -top-1.5 -right-1.5 bg-blue-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded-full ring-2 ring-slate-900">0</span>
     </button>
   </header>
 
-  <!-- Горизонтальные категории -->
-  <nav class="sticky top-[61px] z-20 tg-card px-3 py-2 border-b border-slate-700/40">
-    <div class="flex gap-2 overflow-x-auto custom-scroll py-1" id="categoryTabs">
-      <button onclick="setCategory('all')" class="cat-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-blue-600 text-white transition">Все товары</button>
-      <button onclick="setCategory('cosplay')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">👑 Косплей</button>
-      <button onclick="setCategory('figurines')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">🗿 Фигурки</button>
-      <button onclick="setCategory('home')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">🪴 Для дома</button>
-      <button onclick="setCategory('engineering')" class="cat-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-slate-800 text-slate-300 transition">⚙️ Шестерни/Авто</button>
+  <!-- Истории / Быстрый выбор (Stories кружочки) -->
+  <section class="pt-3 px-3">
+    <div class="flex gap-3 overflow-x-auto custom-scroll pb-1" id="storiesRow">
+      <div onclick="setCategory('lanterns')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/lanterns_autumn.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Светильники</span>
+      </div>
+      <div onclick="setCategory('cosplay')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/crown_rhaenyra.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Косплей</span>
+      </div>
+      <div onclick="setCategory('cosplay')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/venom.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Веном</span>
+      </div>
+      <div onclick="setCategory('decor')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/hearts_legs.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Сердечки</span>
+      </div>
+      <div onclick="setCategory('stationery')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/organizer_pens.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Органайзер</span>
+      </div>
+      <div onclick="setCategory('tools')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/fishing_molds.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Рыбалка</span>
+      </div>
+      <div onclick="setCategory('furniture')" class="flex flex-col items-center gap-1 shrink-0 cursor-pointer active:scale-95 transition">
+        <div class="w-14 h-14 rounded-full p-0.5 story-ring">
+          <img src="images/items/spacers.jpg" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        </div>
+        <span class="text-[10px] text-slate-300 font-medium">Зазорщики</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Горизонтальные категории-таблетки -->
+  <nav class="sticky top-[61px] z-20 tg-card/90 backdrop-blur px-3 py-2 border-b border-slate-800/80">
+    <div class="flex gap-1.5 overflow-x-auto custom-scroll" id="categoryTabs">
+      <button onclick="setCategory('all')" class="cat-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-blue-600 text-white transition">Все изделия</button>
+      <button onclick="setCategory('lanterns')" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-800/80 text-slate-300 transition">🕯 Светильники</button>
+      <button onclick="setCategory('cosplay')" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-800/80 text-slate-300 transition">👑 Косплей & Фигурки</button>
+      <button onclick="setCategory('decor')" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-800/80 text-slate-300 transition">🪴 Декор & Подарки</button>
+      <button onclick="setCategory('stationery')" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-800/80 text-slate-300 transition">✏️ Органайзеры</button>
+      <button onclick="setCategory('tools')" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-800/80 text-slate-300 transition">🎣 Молды для рыбалки</button>
+      <button onclick="setCategory('furniture')" class="cat-btn px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-800/80 text-slate-300 transition">📐 Мебельный крепеж</button>
     </div>
   </nav>
 
-  <!-- Секция товаров -->
-  <main class="p-3" id="shopView">
+  <!-- Сетка товаров -->
+  <main class="p-3">
     <div class="grid grid-cols-2 gap-3" id="productsGrid">
-      <!-- Товары рендерятся через JavaScript -->
+      <!-- Товары рендерятся через JS -->
     </div>
   </main>
 
-  <!-- Модальное окно просмотра товара -->
+  <!-- Модальное окно карточки товара -->
   <div id="productModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center">
-    <div class="tg-card w-full max-w-md max-h-[90vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl p-4 border-t sm:border border-slate-700 shadow-2xl space-y-4">
+    <div class="tg-card w-full max-w-md max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl p-4 border-t sm:border border-slate-700 shadow-2xl space-y-4">
       <div class="flex justify-between items-start">
-        <span id="modalBadge" class="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-400"></span>
-        <button onclick="closeProductModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+        <span id="modalBadge" class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-400 border border-blue-500/30"></span>
+        <button onclick="closeProductModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center active:scale-90">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <img id="modalImage" class="w-full h-56 object-cover rounded-xl shadow-lg" src="" alt="">
+      <img id="modalImage" class="w-full h-64 object-cover rounded-2xl shadow-lg border border-slate-800" src="" alt="">
 
       <div>
-        <h3 id="modalTitle" class="text-lg font-bold"></h3>
-        <div class="flex items-center gap-3 mt-1">
+        <h3 id="modalTitle" class="text-base font-extrabold text-white leading-tight"></h3>
+        <div class="flex items-center gap-3 mt-1.5">
           <span id="modalPrice" class="text-xl font-black text-blue-400"></span>
-          <span id="modalOldPrice" class="text-sm text-slate-500 line-through"></span>
-          <div class="flex items-center text-amber-400 text-xs gap-1 ml-auto">
-            <i class="fa-solid fa-star"></i>
-            <span id="modalRating"></span>
-            <span class="text-slate-500" id="modalReviews"></span>
-          </div>
+          <span class="text-xs text-slate-400 flex items-center gap-1 ml-auto">
+            <i class="fa-solid fa-truck-fast text-blue-400"></i> Доставка Ozon
+          </span>
         </div>
       </div>
 
-      <p id="modalDescription" class="text-xs text-slate-300 leading-relaxed"></p>
+      <p id="modalDescription" class="text-xs text-slate-300 leading-relaxed bg-slate-900/60 p-3 rounded-xl border border-slate-800"></p>
 
       <!-- Характеристики -->
-      <div class="bg-slate-900/60 rounded-xl p-3 border border-slate-800/80">
-        <h4 class="text-xs font-bold text-slate-300 mb-1.5">Характеристики изделия:</h4>
-        <ul id="modalSpecs" class="space-y-1 text-xs text-slate-400"></ul>
-      </div>
-
-      <!-- Варианты исполнения -->
-      <div id="modalOptionsWrapper" class="hidden">
-        <label class="block text-xs font-semibold text-slate-300 mb-1.5" id="modalOptionName"></label>
-        <div class="space-y-1.5" id="modalOptionsList"></div>
+      <div>
+        <h4 class="text-xs font-bold text-slate-400 mb-1.5">Параметры изделия:</h4>
+        <ul id="modalSpecs" class="space-y-1 text-xs text-slate-300"></ul>
       </div>
 
       <!-- Кнопка добавления в корзину -->
-      <button onclick="addCurrentToCart()" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition active:scale-95 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+      <button onclick="addCurrentToCart()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-xl transition active:scale-95 shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
         <i class="fa-solid fa-cart-plus"></i>
         <span>Добавить в заказ</span>
       </button>
@@ -135,20 +178,18 @@
   <!-- Модальное окно Корзины / Оформления -->
   <div id="cartModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-end sm:items-center justify-center">
     <div class="tg-card w-full max-w-md max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl p-4 border-t sm:border border-slate-700 shadow-2xl flex flex-col">
-      <div class="flex items-center justify-between border-b border-slate-700 pb-3">
-        <h3 class="font-bold text-base flex items-center gap-2">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-extrabold text-base flex items-center gap-2 text-white">
           <i class="fa-solid fa-bag-shopping text-blue-400"></i>
-          <span>Корзина заказа</span>
+          <span>Оформление заказа</span>
         </h3>
-        <button onclick="closeCart()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center">
+        <button onclick="closeCart()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center active:scale-90">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
       <!-- Список позиций в корзине -->
-      <div id="cartItemsList" class="divide-y divide-slate-800 max-h-56 overflow-y-auto custom-scroll my-3">
-        <!-- Позиции через JS -->
-      </div>
+      <div id="cartItemsList" class="divide-y divide-slate-800 max-h-52 overflow-y-auto custom-scroll my-3"></div>
 
       <!-- Пустая корзина -->
       <div id="cartEmpty" class="py-8 text-center text-slate-500 hidden">
@@ -156,77 +197,68 @@
         <p class="text-xs">В корзине пока ничего нет</p>
       </div>
 
-      <!-- Форма оформления -->
+      <!-- Форма оформления заказа -->
       <div id="checkoutForm" class="space-y-3 pt-2 border-t border-slate-800 text-xs">
         <div>
           <label class="block text-slate-400 mb-1">Ваше имя:</label>
-          <input type="text" id="orderName" placeholder="Иван" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+          <input type="text" id="orderName" placeholder="Иван" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-blue-500">
         </div>
         <div>
           <label class="block text-slate-400 mb-1">Телефон или Telegram (@username):</label>
-          <input type="text" id="orderContact" placeholder="+7 999 123-45-67 или @nick" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+          <input type="text" id="orderContact" placeholder="+7 999 123-45-67 или @nick" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-blue-500">
         </div>
         <div>
           <label class="block text-slate-400 mb-1">Способ доставки:</label>
           <div class="w-full bg-slate-900 border border-blue-500/50 rounded-xl px-3 py-2.5 text-white flex items-center justify-between text-xs">
             <span class="font-bold flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-              Доставка Ozon (в пункт выдачи ПВЗ)
+              Доставка в пункт выдачи OZON
             </span>
-            <input type="hidden" id="orderDelivery" value="Ozon (ПВЗ)">
-            <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-bold">OZON</span>
+            <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded font-black">OZON</span>
           </div>
         </div>
         <div>
-          <label class="block text-slate-400 mb-1">Город и адрес пункта выдачи Ozon:</label>
-          <input type="text" id="orderAddress" placeholder="г. Казань, ул. Баумана, д. 15 (ПВЗ Ozon)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+          <label class="block text-slate-400 mb-1">Город и адрес ПВЗ Ozon:</label>
+          <input type="text" id="orderAddress" placeholder="г. Казань, ул. Баумана, д. 15 (ПВЗ Ozon)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-white focus:outline-none focus:border-blue-500">
         </div>
       </div>
 
       <!-- Итог и кнопка отправки -->
-      <div class="mt-4 pt-3 border-t border-slate-700 flex items-center justify-between">
+      <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
         <div>
-          <span class="text-[11px] text-slate-400 block">К оплате:</span>
-          <span class="text-xl font-extrabold text-blue-400" id="cartTotalDisplay">0 ₽</span>
+          <span class="text-[10px] text-slate-400 block uppercase font-bold">Итого:</span>
+          <span class="text-xl font-black text-blue-400" id="cartTotalDisplay">0 ₽</span>
         </div>
-        <button id="submitOrderBtn" onclick="submitOrder()" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition active:scale-95 shadow-lg shadow-blue-500/25">
-          Отправить заказ
+        <button id="submitOrderBtn" onclick="submitOrder()" class="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-extrabold rounded-xl transition active:scale-95 shadow-lg shadow-blue-500/30">
+          Оформить заказ
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Плавающая нижняя панель корзины -->
-  <div id="bottomBar" class="fixed bottom-3 inset-x-3 z-40 hidden">
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between backdrop-blur">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center font-bold text-sm" id="bottomCartCount">1</div>
-        <div>
-          <div class="text-[11px] text-blue-100 font-medium leading-none">В заказе на сумму:</div>
-          <div class="text-base font-extrabold" id="bottomCartSum">2 900 ₽</div>
-        </div>
-      </div>
-      <button onclick="openCart()" class="px-4 py-2 bg-white text-blue-700 font-bold text-xs rounded-xl shadow active:scale-95">
-        Оформить →
-      </button>
-    </div>
-  </div>
+  <!-- Нижняя панель навигации (1-в-1 как в GigaChat Mini App!) -->
+  <nav class="fixed bottom-0 inset-x-0 z-40 tg-card/95 backdrop-blur-md border-t border-slate-800/80 px-6 py-2.5 flex items-center justify-around shadow-2xl">
+    <button onclick="setCategory('all')" class="flex flex-col items-center gap-1 text-blue-400 active:scale-90 transition">
+      <i class="fa-solid fa-house text-lg"></i>
+      <span class="text-[10px] font-bold">Каталог</span>
+    </button>
+    <button onclick="openCart()" class="relative flex flex-col items-center gap-1 text-slate-400 hover:text-white active:scale-90 transition">
+      <i class="fa-solid fa-bag-shopping text-lg"></i>
+      <span id="bottomNavBadge" class="hidden absolute -top-1 -right-2 bg-blue-600 text-white text-[9px] font-black px-1.5 py-0.2 rounded-full">0</span>
+      <span class="text-[10px] font-bold">Корзина</span>
+    </button>
+    <a href="https://t.me/printing03d" target="_blank" class="flex flex-col items-center gap-1 text-slate-400 hover:text-white active:scale-90 transition">
+      <i class="fa-solid fa-paper-plane text-lg text-blue-400"></i>
+      <span class="text-[10px] font-bold">Канал</span>
+    </a>
+  </nav>
 
-  <!-- JavaScript магазина -->
+  <!-- Скрипт приложения -->
   <script>
-    // 1. Инициализация Telegram WebApp
-    const tg = window.Telegram?.WebApp;
+    const tg = window.Telegram ? window.Telegram.WebApp : null;
     if (tg) {
-      tg.ready();
       tg.expand();
-      // Заполняем контактные данные если открыто через Telegram
-      const user = tg.initDataUnsafe?.user;
-      if (user) {
-        const contactField = document.getElementById('orderContact');
-        const nameField = document.getElementById('orderName');
-        if (nameField && user.first_name) nameField.value = user.first_name + (user.last_name ? ' ' + user.last_name : '');
-        if (contactField && user.username) contactField.value = '@' + user.username;
-      }
+      tg.enableClosingConfirmation();
     }
 
     function hapticFeedback(type = 'light') {
@@ -237,14 +269,11 @@
       } catch (e) {}
     }
 
-    // 2. Каталог товаров
     let products = [];
     let currentCategory = 'all';
     let cart = [];
     let activeProduct = null;
-    let selectedOptionIndex = 0;
 
-    // Загрузка товаров из JSON
     async function loadProducts() {
       try {
         const resp = await fetch('products.json');
@@ -264,15 +293,14 @@
     function setCategory(cat) {
       hapticFeedback('selection');
       currentCategory = cat;
-      document.getElementById('shopView').classList.remove('hidden');
-
       document.querySelectorAll('#categoryTabs .cat-btn').forEach(btn => {
         btn.classList.remove('bg-blue-600', 'text-white');
-        btn.classList.add('bg-slate-800', 'text-slate-300');
+        btn.classList.add('bg-slate-800/80', 'text-slate-300');
       });
-      event.target.classList.remove('bg-slate-800', 'text-slate-300');
-      event.target.classList.add('bg-blue-600', 'text-white');
-
+      if (event && event.target && event.target.classList) {
+        event.target.classList.remove('bg-slate-800/80', 'text-slate-300');
+        event.target.classList.add('bg-blue-600', 'text-white');
+      }
       renderProducts();
     }
 
@@ -283,26 +311,21 @@
         : products.filter(p => p.category === currentCategory);
 
       grid.innerHTML = filtered.map(p => `
-        <div onclick="openProductModal('${p.id}')" class="tg-card rounded-2xl overflow-hidden border border-slate-700/60 shadow-lg flex flex-col justify-between active:scale-[0.98] transition cursor-pointer">
+        <div onclick="openProductModal('${p.id}')" class="tg-card rounded-2xl overflow-hidden border border-slate-800/90 shadow-lg flex flex-col justify-between active:scale-[0.98] transition cursor-pointer">
           <div class="relative">
-            <img src="${p.image}" alt="${p.title}" class="w-full h-36 object-cover bg-slate-900">
-            ${p.badge ? `<span class="absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-600/90 text-white backdrop-blur shadow">${p.badge}</span>` : ''}
+            <img src="${p.image}" alt="${p.title}" class="w-full h-40 object-cover bg-slate-900" loading="lazy">
+            ${p.badge ? `<span class="absolute top-2 left-2 text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-blue-600/90 text-white backdrop-blur shadow">${p.badge}</span>` : ''}
           </div>
           <div class="p-2.5 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="font-bold text-xs line-clamp-2 leading-tight">${p.title}</h3>
-              <div class="flex items-center gap-1 text-[10px] text-amber-400 mt-1">
-                <i class="fa-solid fa-star"></i>
-                <span>${p.rating}</span>
-                <span class="text-slate-500">(${p.reviews})</span>
-              </div>
+              <h3 class="font-bold text-xs line-clamp-2 leading-tight text-white">${p.title}</h3>
+              <p class="text-[10px] text-slate-400 mt-1 line-clamp-1">${p.specs && p.specs.length > 0 ? p.specs[0] : p.categoryName}</p>
             </div>
-            <div class="mt-2.5 flex items-center justify-between pt-1 border-t border-slate-800">
+            <div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-800/80">
               <div>
-                <span class="text-sm font-extrabold text-blue-400">${p.price.toLocaleString()} ₽</span>
-                ${p.oldPrice ? `<span class="text-[10px] text-slate-500 line-through block leading-none">${p.oldPrice.toLocaleString()} ₽</span>` : ''}
+                <span class="text-sm font-extrabold text-blue-400">${p.price > 0 ? p.price.toLocaleString() + ' ₽' : '0 ₽'}</span>
               </div>
-              <button onclick="event.stopPropagation(); quickAddToCart('${p.id}')" class="w-7 h-7 rounded-lg bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-xs active:scale-90 transition shadow">
+              <button onclick="event.stopPropagation(); quickAddToCart('${p.id}')" class="w-7 h-7 rounded-xl bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center text-xs active:scale-90 transition shadow-md shadow-blue-600/20">
                 <i class="fa-solid fa-plus"></i>
               </button>
             </div>
@@ -311,66 +334,27 @@
       `).join('');
     }
 
-    // 3. Модалка товара
     function openProductModal(id) {
       hapticFeedback('light');
       activeProduct = products.find(p => p.id === id);
       if (!activeProduct) return;
 
-      selectedOptionIndex = 0;
       document.getElementById('modalImage').src = activeProduct.image;
       document.getElementById('modalTitle').textContent = activeProduct.title;
       document.getElementById('modalBadge').textContent = activeProduct.badge || activeProduct.categoryName;
-      document.getElementById('modalPrice').textContent = activeProduct.price.toLocaleString() + ' ₽';
-      document.getElementById('modalOldPrice').textContent = activeProduct.oldPrice ? activeProduct.oldPrice.toLocaleString() + ' ₽' : '';
-      document.getElementById('modalRating').textContent = activeProduct.rating;
-      document.getElementById('modalReviews').textContent = `(${activeProduct.reviews} отзывов)`;
+      document.getElementById('modalPrice').textContent = activeProduct.price > 0 ? activeProduct.price.toLocaleString() + ' ₽' : '0 ₽';
       document.getElementById('modalDescription').textContent = activeProduct.description;
 
       const specsList = document.getElementById('modalSpecs');
-      specsList.innerHTML = (activeProduct.specs || []).map(s => `<li>• ${s}</li>`).join('');
-
-      const optWrapper = document.getElementById('modalOptionsWrapper');
-      if (activeProduct.options && activeProduct.options.length > 0) {
-        optWrapper.classList.remove('hidden');
-        const opt = activeProduct.options[0];
-        document.getElementById('modalOptionName').textContent = opt.name + ':';
-        document.getElementById('modalOptionsList').innerHTML = opt.choices.map((c, idx) => `
-          <button type="button" onclick="selectOption(${idx})" class="opt-btn w-full p-2 rounded-xl border text-xs text-left flex justify-between items-center transition ${idx === 0 ? 'border-blue-500 bg-blue-500/10 text-blue-400' : 'border-slate-700 bg-slate-800 text-slate-300'}">
-            <span>${c.label}</span>
-            <span class="font-bold">${c.priceDelta === 0 ? 'Базовая' : (c.priceDelta > 0 ? '+' + c.priceDelta + ' ₽' : c.priceDelta + ' ₽')}</span>
-          </button>
-        `).join('');
-      } else {
-        optWrapper.classList.add('hidden');
-      }
+      specsList.innerHTML = (activeProduct.specs || []).map(s => `<li class="flex items-start gap-1.5"><i class="fa-solid fa-check text-blue-400 text-[10px] mt-0.5"></i> <span>${s}</span></li>`).join('');
 
       document.getElementById('productModal').classList.remove('hidden');
-    }
-
-    function selectOption(idx) {
-      hapticFeedback('selection');
-      selectedOptionIndex = idx;
-      document.querySelectorAll('#modalOptionsList .opt-btn').forEach((btn, i) => {
-        if (i === idx) {
-          btn.classList.add('border-blue-500', 'bg-blue-500/10', 'text-blue-400');
-          btn.classList.remove('border-slate-700', 'bg-slate-800', 'text-slate-300');
-        } else {
-          btn.classList.remove('border-blue-500', 'bg-blue-500/10', 'text-blue-400');
-          btn.classList.add('border-slate-700', 'bg-slate-800', 'text-slate-300');
-        }
-      });
-      // Обновляем цену в модалке с учетом дельты
-      const opt = activeProduct.options[0].choices[idx];
-      const finalPrice = activeProduct.price + opt.priceDelta;
-      document.getElementById('modalPrice').textContent = finalPrice.toLocaleString() + ' ₽';
     }
 
     function closeProductModal() {
       document.getElementById('productModal').classList.add('hidden');
     }
 
-    // 4. Логика корзины
     function quickAddToCart(id) {
       hapticFeedback('medium');
       const item = products.find(p => p.id === id);
@@ -381,14 +365,7 @@
     function addCurrentToCart() {
       hapticFeedback('medium');
       if (!activeProduct) return;
-      let price = activeProduct.price;
-      let optLabel = 'Стандарт';
-      if (activeProduct.options && activeProduct.options.length > 0) {
-        const choice = activeProduct.options[0].choices[selectedOptionIndex];
-        price += choice.priceDelta;
-        optLabel = choice.label;
-      }
-      addToCart(activeProduct, price, optLabel);
+      addToCart(activeProduct, activeProduct.price, 'Стандарт');
       closeProductModal();
     }
 
@@ -423,31 +400,24 @@
       const totalCount = cart.reduce((sum, i) => sum + i.qty, 0);
       const totalSum = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 
-      // Бейдж в шапке
-      const badge = document.getElementById('cartBadge');
+      const cartBadge = document.getElementById('cartBadge');
+      const bottomNavBadge = document.getElementById('bottomNavBadge');
+
       if (totalCount > 0) {
-        badge.textContent = totalCount;
-        badge.classList.remove('hidden');
+        cartBadge.textContent = totalCount;
+        cartBadge.classList.remove('hidden');
+        bottomNavBadge.textContent = totalCount;
+        bottomNavBadge.classList.remove('hidden');
       } else {
-        badge.classList.add('hidden');
+        cartBadge.classList.add('hidden');
+        bottomNavBadge.classList.add('hidden');
       }
 
-      // Нижняя плашка
-      const bar = document.getElementById('bottomBar');
-      if (totalCount > 0) {
-        document.getElementById('bottomCartCount').textContent = totalCount;
-        document.getElementById('bottomCartSum').textContent = totalSum.toLocaleString() + ' ₽';
-        bar.classList.remove('hidden');
-      } else {
-        bar.classList.add('hidden');
-      }
-
-      // Сумма в модалке корзины
       document.getElementById('cartTotalDisplay').textContent = totalSum.toLocaleString() + ' ₽';
     }
 
     function openCart() {
-      hapticFeedback('light');
+      hapticFeedback('medium');
       renderCartItems();
       document.getElementById('cartModal').classList.remove('hidden');
     }
@@ -478,31 +448,28 @@
 
       container.innerHTML = cart.map((item, idx) => `
         <div class="py-2.5 flex items-center justify-between gap-3">
-          <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover bg-slate-900">
+          <img src="${item.image}" class="w-12 h-12 rounded-xl object-cover bg-slate-900 border border-slate-800">
           <div class="flex-1 min-w-0">
-            <h4 class="font-bold text-xs truncate">${item.title}</h4>
-            <p class="text-[10px] text-slate-400 truncate">${item.option}</p>
-            <span class="text-xs font-extrabold text-blue-400">${(item.price * item.qty).toLocaleString()} ₽</span>
+            <h4 class="font-bold text-xs truncate text-white">${item.title}</h4>
+            <span class="text-xs font-black text-blue-400">${(item.price * item.qty).toLocaleString()} ₽</span>
           </div>
-          <div class="flex items-center gap-2 bg-slate-900 rounded-lg p-1 border border-slate-700">
-            <button onclick="changeQty(${idx}, -1)" class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs active:scale-90">-</button>
-            <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
-            <button onclick="changeQty(${idx}, 1)" class="w-6 h-6 rounded bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs active:scale-90">+</button>
+          <div class="flex items-center gap-2 bg-slate-900 rounded-xl p-1 border border-slate-700/80">
+            <button onclick="changeQty(${idx}, -1)" class="w-6 h-6 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs active:scale-90">-</button>
+            <span class="text-xs font-bold w-4 text-center text-white">${item.qty}</span>
+            <button onclick="changeQty(${idx}, 1)" class="w-6 h-6 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center font-bold text-xs active:scale-90">+</button>
           </div>
         </div>
       `).join('');
     }
 
-    // 5. Отправка заказа в Telegram
     async function submitOrder() {
       hapticFeedback('success');
       const name = document.getElementById('orderName').value.trim();
       const contact = document.getElementById('orderContact').value.trim();
-      const delivery = document.getElementById('orderDelivery').value;
       const address = document.getElementById('orderAddress').value.trim();
 
       if (!name || !contact) {
-        alert('Пожалуйста, укажите имя и контакт (телефон или Telegram) для связи!');
+        alert('Пожалуйста, укажите имя и телефон или Telegram для связи!');
         return;
       }
 
@@ -512,22 +479,22 @@
         type: "NEW_ORDER",
         date: new Date().toLocaleString('ru-RU'),
         customer: { name, contact },
-        delivery: { method: delivery, address: address || "Уточнить у менеджера" },
-        items: cart.map(i => ({ title: i.title, option: i.option, qty: i.qty, sum: i.price * i.qty })),
+        delivery: { method: "Ozon (ПВЗ)", address: address || "Уточнить у менеджера" },
+        items: cart.map(i => ({ title: i.title, option: i.option || 'Стандарт', qty: i.qty, sum: i.price * i.qty })),
         totalSum: totalSum
       };
 
-      // 1. Прямая отправка владельцу в Telegram (работает на GitHub Pages 24/7 без сервера!)
+      // Прямая отправка владельцу в Telegram через нового бота @print03d_shop_bot
       try {
-        const token = "8744417186:AAFdvQ0GT_Tosi_0r7Dp64vJdihLj5pEDj0";
+        const token = "8927106197:AAEzwssSeyfg_YdW4MIvHbKnC4ksF3HjFQc";
         const chatId = "496029586";
-        const itemsText = orderData.items.map(it => `  • <b>${it.title}</b> (${it.option || 'Стандарт'}) — ${it.qty} шт. x ${it.sum.toLocaleString()} ₽`).join('\n');
-        const msg = `🛍 <b>НОВЫЙ ЗАКАЗ ИЗ МАГАЗИНА 3D-ПЕЧАТИ!</b>\n\n` +
+        const itemsText = orderData.items.map(it => `  • <b>${it.title}</b> — ${it.qty} шт.`).join('\n');
+        const msg = `🛍 <b>НОВЫЙ ЗАКАЗ ИЗ МИНИ-ПРИЛОЖЕНИЯ!</b>\n\n` +
                     `👤 <b>Клиент:</b> ${orderData.customer.name}\n` +
                     `📞 <b>Связь:</b> ${orderData.customer.contact}\n` +
                     `🚚 <b>Доставка Ozon:</b> ${orderData.delivery.address}\n\n` +
                     `📦 <b>Состав заказа:</b>\n${itemsText}\n\n` +
-                    `💰 <b>ИТОГО К ОПЛАТЕ:</b> <b>${orderData.totalSum.toLocaleString()} ₽</b>\n` +
+                    `💰 <b>СУММА:</b> <b>${orderData.totalSum.toLocaleString()} ₽</b>\n` +
                     `⏰ <i>${orderData.date}</i>`;
 
         await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -540,19 +507,10 @@
           })
         });
       } catch (e) {
-        console.log('Telegram direct notification error:', e);
+        console.log('Telegram order notification error:', e);
       }
 
-      // 2. Если открыто через ReplyKeyboard / MenuButton — передаем данные боту
-      try {
-        if (tg && tg.sendData) {
-          tg.sendData(JSON.stringify(orderData));
-        }
-      } catch (e) {
-        console.log('tg.sendData fallback:', e);
-      }
-
-      alert(`🎉 Спасибо, ${name}! Заказ на ${totalSum.toLocaleString()} ₽ оформлен. Менеджер свяжется с вами в течение 10 минут!`);
+      alert(`🎉 Спасибо, ${name}! Заказ отправлен мастеру. Мы свяжемся с вами в Telegram для подтверждения доставки в ПВЗ Ozon!`);
       cart = [];
       updateCartUI();
       closeCart();
@@ -561,7 +519,6 @@
       }
     }
 
-    // Старт
     loadProducts();
   </script>
 </body>
